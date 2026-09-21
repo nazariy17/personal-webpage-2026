@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { profile, skills, experience, projects } from './content';
+import type { Project } from './content';
 import Hero from './components/Hero';
 import ProjectDialog from './components/ProjectDialog';
 import { Reveal } from './components/Reveal';
 import { useReducedMotion } from './hooks/useReducedMotion';
-function Intro({ reduced }) {
+function Intro({ reduced }: { reduced: boolean }) {
   const [done, setDone] = useState(reduced);
   const [progress, setProgress] = useState(0);
   useEffect(() => {
     if (reduced) { setDone(true); return; }
-    let frame;
+    let frame: number;
     const start = performance.now();
-    const tick = now => { const value = Math.min(100, Math.round((now - start) / 9)); setProgress(value); if (value < 100) frame = requestAnimationFrame(tick); else setDone(true); };
+    const tick = (now: number) => { const value = Math.min(100, Math.round((now - start) / 9)); setProgress(value); if (value < 100) frame = requestAnimationFrame(tick); else setDone(true); };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [reduced]);
@@ -29,7 +30,7 @@ function Experience() {
 function Skills() {
   return <section className="section skills" id="skills"><Reveal className="section-heading"><p className="eyebrow">03 / TECHNICAL TOOLKIT</p><h2>Across the stack.</h2><p>Interfaces, services, and the systems that connect them.</p></Reveal><Reveal className="skill-tags">{skills.map(skill => <span key={skill}>{skill}</span>)}</Reveal></section>;
 }
-function Projects({ onSelect }) {
+function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
   return <section className="section projects" id="projects"><Reveal className="section-heading"><p className="eyebrow">04 / SELECTED WORK</p><h2>Projects & perspectives.</h2><p>Selected case studies are being prepared.</p></Reveal><div className="project-grid">{projects.map((project, i) => <Reveal key={project.id}><button className="project-card" onClick={() => onSelect(project)}><span className="project-top">0{project.id} / {project.category.toUpperCase()} <span>↗</span></span><div className={`project-art art-${['one', 'two', 'three'][i]}`} aria-hidden="true"><span>0{project.id}</span></div><h3>{project.title}</h3><p>{project.summary}</p><span className="project-bottom">VIEW PROJECT STATUS <span>+</span></span></button></Reveal>)}</div></section>;
 }
 function Footer() {
@@ -38,6 +39,6 @@ function Footer() {
 export default function App() {
   const reduced = useReducedMotion();
   const [paused, setPaused] = useState(false);
-  const [project, setProject] = useState(null);
+  const [project, setProject] = useState<Project | null>(null);
   return <div className={`portfolio ${reduced || paused ? 'motion-paused' : 'js-motion'}`}><Intro reduced={reduced}/><a className="skip" href="#about">Skip to content</a><Navigation/><main><Hero reduced={reduced} paused={paused} setPaused={setPaused}/><About/><Experience/><Skills/><Projects onSelect={setProject}/><Footer/></main><ProjectDialog project={project} onClose={() => setProject(null)}/></div>;
 }

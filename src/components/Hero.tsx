@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { profile } from '../content';
+import type { CSSProperties } from 'react';
+
+interface HeroProps {
+  reduced: boolean;
+  paused: boolean;
+  setPaused: (paused: boolean) => void;
+}
+
+type PortraitStyle = CSSProperties & { '--turn': string };
 import './Hero.css';
 
 const headlines = [
@@ -7,11 +16,11 @@ const headlines = [
   ['FULL-STACK', 'DEVELOPER.'],
   ['FOUNDER.', 'BUILDER.'],
 ];
-const clamp = value => Math.max(0, Math.min(1, value));
-const smoothstep = value => value * value * (3 - 2 * value);
+const clamp = (value: number) => Math.max(0, Math.min(1, value));
+const smoothstep = (value: number) => value * value * (3 - 2 * value);
 
 // Headline holds are separated by short, reversible scroll crossfades.
-function headlinePosition(progress) {
+function headlinePosition(progress: number) {
   if (progress < 0.26) return 0;
   if (progress < 0.38) return smoothstep((progress - 0.26) / 0.12);
   if (progress < 0.64) return 1;
@@ -19,10 +28,10 @@ function headlinePosition(progress) {
   return 2;
 }
 
-export default function Hero({ reduced, paused, setPaused }) {
-  const sequence = useRef(null);
-  const stage = useRef(null);
-  const video = useRef(null);
+export default function Hero({ reduced, paused, setPaused }: HeroProps) {
+  const sequence = useRef<HTMLElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
+  const video = useRef<HTMLVideoElement>(null);
   const requestedTime = useRef(0);
   const [progress, setProgress] = useState(0);
   const [videoFailed, setVideoFailed] = useState(false);
@@ -30,10 +39,11 @@ export default function Hero({ reduced, paused, setPaused }) {
 
   useEffect(() => {
     if (reduced) { setProgress(0); return; }
-    if (paused) return;
+    if (paused || !sequence.current) return;
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (!sequence.current || !stage.current) return;
       const bounds = sequence.current.getBoundingClientRect();
       const travel = bounds.height - stage.current.offsetHeight;
       setProgress(travel > 0 ? clamp(-bounds.top / travel) : 0);
@@ -70,6 +80,8 @@ export default function Hero({ reduced, paused, setPaused }) {
   // A video contains the actual head turn. Flat images get only a subtle tilt.
   const turn = hasVideo ? 0 : Math.sin(progress * Math.PI * 2) * (profile.portraitImage ? 12 : 38);
 
+  const portraitStyle: PortraitStyle = { '--turn': `${turn}deg` };
+
   return (
     <section ref={sequence} className={`hero-sequence ${reduced ? 'hero-sequence-static' : ''}`} id="home" aria-label="Introduction">
       <div ref={stage} className="hero hero-pinned" data-progress={progress.toFixed(3)} onPointerMove={event => {
@@ -80,9 +92,9 @@ export default function Hero({ reduced, paused, setPaused }) {
       }}>
         <div className="spotlight" />
         <div className="portrait-stage" aria-hidden="true">
-          <div className="portrait-placeholder" style={{ '--turn': `${turn}deg` }}>
+          <div className="portrait-placeholder" style={portraitStyle}>
             {hasVideo ? (
-              <video ref={video} src={profile.portraitVideo} poster={profile.portraitImage || undefined}
+              <video ref={video} src={profile.portraitVideo || undefined} poster={profile.portraitImage || undefined}
                 muted playsInline preload="auto" onLoadedMetadata={seekPortrait} onLoadedData={seekPortrait}
                 onSeeked={seekPortrait} onError={() => setVideoFailed(true)} />
             ) : profile.portraitImage ? <img src={profile.portraitImage} alt="" /> : <span className="portrait-initial">N</span>}
@@ -110,3 +122,5 @@ export default function Hero({ reduced, paused, setPaused }) {
     </section>
   );
 }
+
+

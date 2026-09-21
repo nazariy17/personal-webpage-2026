@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-export function Reveal({ children, className = '', ...props }) {
-  const ref = useRef(null);
+import type { ComponentPropsWithoutRef } from 'react';
+
+export function Reveal({ children, className = '', ...props }: ComponentPropsWithoutRef<'div'>) {
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
+    if (!ref.current) return;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) { setVisible(true); observer.disconnect(); }
     }, { threshold: 0.1 });
