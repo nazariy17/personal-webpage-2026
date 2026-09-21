@@ -13,7 +13,7 @@ import './Hero.css';
 
 const headlines = [
   ['SOFTWARE', 'ENGINEER.'],
-  ['FULL-STACK', 'DEVELOPER.'],
+  ['PRODUCT', 'THINKER.'],
   ['FOUNDER.', 'BUILDER.'],
 ];
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
@@ -101,8 +101,8 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
           </div>
         </div>
         <div className="hero-title">
-          <p className="eyebrow">{profile.name.toUpperCase()} / ENGINEER & FOUNDER</p>
-          <h1 className="scroll-headlines" aria-label="Software engineer, full-stack developer, founder and builder">
+          <p className="eyebrow">{profile.name.toUpperCase()} / ENGINEERING · PRODUCT</p>
+          <h1 className="scroll-headlines" aria-label="Software engineer, product thinker, founder and builder">
             {headlines.map((lines, index) => {
               const distance = index - position;
               const opacity = clamp(1 - Math.abs(distance));

@@ -1,0 +1,71 @@
+/* Small content additions using the existing portfolio typography and surfaces. */
+.beyond { padding-top: 64px; padding-bottom: 72px; }
+.beyond-introduction { display: grid; grid-template-columns: .85fr 1.3fr; gap: 10%; }
+.beyond .section-heading { margin-bottom: 24px; }
+.beyond-copy p { margin: 0 0 16px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+.interest-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 26px; }
+.interest-grid article { border-top: 1px solid var(--line); padding-top: 20px; }
+.interest-grid h3 { margin: 0 0 10px; font-size: 16px; font-weight: 600; }
+.interest-grid p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--muted); }
+.projects .project-grid-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.project-grid-pair .project-card { display: flex; flex-direction: column; }
+.project-grid-pair .project-top { width: 100%; gap: 12px; line-height: 1.6; }
+.project-grid-pair .project-art { align-self: stretch; flex-shrink: 0; }
+.project-grid-pair .project-bottom { width: 100%; margin-top: auto; }
+.project-grid-pair .project-card > p { margin-bottom: 26px; }
+.project-themes-label { margin-top: 24px; font-size: 12px; letter-spacing: 1px; }
+.project-themes { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.project-themes li { border: 1px solid var(--line); border-radius: 6px; padding: 7px 10px; color: var(--muted); font-size: 13px; }
+@media (max-width: 900px) {
+  .beyond-introduction { grid-template-columns: 1fr; gap: 0; }
+  .interest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .beyond { padding-top: 52px; padding-bottom: 56px; }
+  .projects .project-grid-pair { grid-template-columns: 1fr; }
+  .interest-grid { gap: 20px; }
+}
+
+/* Keep the introduction compact and let the copy use its available column. */
+.about.section {
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: start;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.about.section .about-card {
+  width: 100%;
+  max-width: 300px;
+  margin: 8px 0 0;
+}
+.about.section .about-copy { min-width: 0; }
+.about.section .about-copy h2 {
+  font-size: clamp(34px, 3.1vw, 48px);
+  margin-bottom: 22px;
+}
+.about.section .about-copy > p:not(.eyebrow) {
+  max-width: none;
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+.about.section .disciplines {
+  margin-top: 24px;
+  padding-top: 22px;
+  gap: clamp(24px, 4vw, 64px);
+}
+@media (max-width: 1000px) and (min-width: 761px) {
+  .about.section { grid-template-columns: 230px minmax(0, 1fr); gap: 32px; }
+  .about.section .card-caption { flex-direction: column; gap: 5px; }
+  .about.section .small-label { font-size: 9px; letter-spacing: .8px; }
+  .about.section .card-monogram { font-size: 160px; }
+}
+@media (max-width: 760px) {
+  .about.section { grid-template-columns: 1fr; gap: 40px; padding-block: 56px; }
+  .about.section .about-card { width: 220px; margin: 0 auto; }
+  .about.section .card-monogram { font-size: 150px; }
+  .about.section .small-label { font-size: 9px; letter-spacing: .5px; }
+  .about.section .card-caption { padding: 12px 10px; font-size: 11px; }
+  .about.section .about-copy h2 { font-size: clamp(30px, 7.5vw, 40px); }
+  .about.section .disciplines { justify-content: space-between; gap: 12px; }
+}

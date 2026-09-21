@@ -22,7 +22,7 @@ export default function ProjectDialog({ project, onClose }: ProjectDialogProps) 
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) ref.current.close();
   }}>
     <button className="dialog-close" onClick={() => ref.current?.close()} aria-label="Close project">×</button>
-    <p className="eyebrow">SELECTED WORK / COMING SOON</p><h2 id="project-title">{project?.title}</h2><p>{project?.description}</p>
+    <p className="eyebrow">{project?.status.toUpperCase()}</p><h2 id="project-title">{project?.title}</h2><p>{project?.description}</p><p className="project-themes-label">AREAS TO EXPLORE</p><ul className="project-themes">{project?.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
     <button className="button" onClick={() => ref.current?.close()}>Back to projects</button>
   </dialog>;
 }
