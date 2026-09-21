@@ -1,4 +1,4 @@
-# Nazar — Personal Portfolio
+# Nazar's Personal Portfolio
 
 A React + TypeScript portfolio built with Vite. The design follows the supplied video reference: a dark cinematic hero, rotating headlines, spotlight movement, scroll reveals, project cards, and oversized typography.
 
