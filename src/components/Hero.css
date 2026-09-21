@@ -1,0 +1,63 @@
+/* Scroll distance belongs to the wrapper; the hero stays pinned inside it. */
+.hero-sequence {
+  position: relative;
+  height: 300svh;
+}
+.hero-sequence .hero-pinned {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 0;
+  max-height: none;
+}
+.hero-sequence .portrait-placeholder {
+  transition: none;
+  will-change: transform;
+}
+.hero-sequence .scroll-headlines {
+  display: grid;
+}
+.hero-sequence .scroll-headline {
+  grid-area: 1 / 1;
+  animation: none;
+  transition: none;
+  will-change: transform, opacity;
+}
+.hero-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff0d;
+}
+.hero-scroll-progress > span {
+  display: block;
+  height: 100%;
+  background: #bbc8d5;
+  transform-origin: left;
+}
+.hero-sequence-static { height: auto; }
+.hero-sequence-static .hero-pinned {
+  position: relative;
+  height: max(760px, 100svh);
+}
+@media (max-width: 650px) {
+  .hero-sequence { height: 280svh; }
+  .hero-sequence .hero-title { top: 25%; }
+  .hero-sequence .hero-description { top: 51%; }
+  .hero-sequence .hero-actions { bottom: 76px; }
+  .hero-sequence .scroll-cue { bottom: 28px; }
+  .hero-sequence-static { height: auto; }
+  .hero-sequence-static .hero-pinned { height: max(760px, 100svh); }
+}
+/* Keep controls reachable in landscape and at high browser zoom. */
+@media (max-height: 600px) {
+  .hero-sequence .hero-title { top: 28%; }
+  .hero-sequence h1 { font-size: clamp(28px, 6vh, 48px); }
+  .hero-sequence .hero-title .eyebrow { margin-bottom: 12px; }
+  .hero-sequence .hero-description { display: none; }
+  .hero-sequence .hero-actions { bottom: 65px; }
+  .hero-sequence .scroll-cue { bottom: 23px; }
+  .hero-sequence .hero-index { display: none; }
+}

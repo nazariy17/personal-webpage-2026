@@ -46,3 +46,9 @@ Semantic sections, a skip link, native modal focus handling and Escape support, 
 
 The existing Sites project is retained in `.openai/hosting.json`. Source files are separate from build output; credentials are never stored in this repository.
 
+
+## Scroll-controlled introduction
+
+The introduction is pinned for approximately two viewport heights of scrolling. Scroll position drives portrait movement, reversible headline crossfades, and the progress indicator. It does not advance on a timer. The next section follows normally after the sequence. Reduced-motion preferences disable pinning and show a static introduction; Pause motion freezes the visual sequence while leaving normal page scrolling available.
+
+For the actual head-turning effect, put a short portrait turn video in `public/` and set `profile.portraitVideo` in `src/content.js`. The video playhead is scrubbed directly by scrolling, including in reverse; it never autoplays. A short browser-compatible MP4 with frequent keyframes is best for responsive seeking. Use `profile.portraitImage` as its poster/fallback. A still image receives only a subtle plane tilt and cannot show new views of a person's face. Until portrait assets are supplied, the monogram demonstrates the scroll-linked motion.

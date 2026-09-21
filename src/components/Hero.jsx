@@ -1,30 +1,112 @@
 import { useEffect, useRef, useState } from 'react';
 import { profile } from '../content';
-const headlines = [['SOFTWARE', 'ENGINEER.'], ['FULL-STACK', 'DEVELOPER.'], ['FOUNDER.', 'BUILDER.']];
+import './Hero.css';
+
+const headlines = [
+  ['SOFTWARE', 'ENGINEER.'],
+  ['FULL-STACK', 'DEVELOPER.'],
+  ['FOUNDER.', 'BUILDER.'],
+];
+const clamp = value => Math.max(0, Math.min(1, value));
+const smoothstep = value => value * value * (3 - 2 * value);
+
+// Headline holds are separated by short, reversible scroll crossfades.
+function headlinePosition(progress) {
+  if (progress < 0.26) return 0;
+  if (progress < 0.38) return smoothstep((progress - 0.26) / 0.12);
+  if (progress < 0.64) return 1;
+  if (progress < 0.76) return 1 + smoothstep((progress - 0.64) / 0.12);
+  return 2;
+}
+
 export default function Hero({ reduced, paused, setPaused }) {
-  const [slide, setSlide] = useState(0);
+  const sequence = useRef(null);
+  const stage = useRef(null);
   const video = useRef(null);
+  const requestedTime = useRef(0);
+  const [progress, setProgress] = useState(0);
+  const [videoFailed, setVideoFailed] = useState(false);
   const stopped = reduced || paused;
+
   useEffect(() => {
-    if (stopped) return;
-    const timer = setInterval(() => { if (!document.hidden) setSlide(s => (s + 1) % headlines.length); }, 4200);
-    return () => clearInterval(timer);
-  }, [stopped]);
-  useEffect(() => { if (video.current) { if(stopped) video.current.pause(); else video.current.play().catch(() => {}); } }, [stopped]);
-  return <section className="hero" id="home" onPointerMove={event => {
-    if(stopped || event.pointerType === 'touch') return;
-    const r = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty('--mx', `${(event.clientX - r.left - r.width / 2) * .035}px`);
-    event.currentTarget.style.setProperty('--my', `${(event.clientY - r.top - r.height / 2) * .035}px`);
-  }}>
-    <div className="spotlight" />
-    <div className="portrait-stage" aria-hidden="true"><div className="portrait-placeholder" style={{ '--turn': `${[-7, 8, 0][slide]}deg` }}>
-      {profile.portraitVideo ? <video ref={video} src={profile.portraitVideo} poster={profile.portraitImage || undefined} muted loop playsInline /> : profile.portraitImage ? <img src={profile.portraitImage} alt="" /> : <span className="portrait-initial">N</span>}
-    </div></div>
-    <div className="hero-title"><p className="eyebrow">{profile.name.toUpperCase()} / ENGINEER & FOUNDER</p><h1 aria-label="Software engineer, full-stack developer, founder and builder"><span key={slide} className="headline" aria-hidden="true">{headlines[slide].map(line => <span key={line}>{line}</span>)}</span></h1></div>
-    <div className="hero-description"><span className="description-rule"/><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · WEB · MOBILE</span></div>
-    <a className="scroll-cue" href="#about"><span>↓</span> DISCOVER MY BACKGROUND</a>
-    <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><button className="outline" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{stopped ? 'Motion paused' : 'Pause motion'}</button></div>
-    <div className="hero-index"><span>{String(slide + 1).padStart(2, '0')}</span><i />03</div>
-  </section>;
+    if (reduced) { setProgress(0); return; }
+    if (paused) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const bounds = sequence.current.getBoundingClientRect();
+      const travel = bounds.height - stage.current.offsetHeight;
+      setProgress(travel > 0 ? clamp(-bounds.top / travel) : 0);
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    observer.observe(sequence.current);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+    };
+  }, [paused, reduced]);
+
+  const seekPortrait = () => {
+    const media = video.current;
+    if (!media || !Number.isFinite(media.duration) || media.duration <= 0 || media.seeking) return;
+    // Avoid duration itself, where browsers may render a blank final frame.
+    const target = requestedTime.current * Math.max(0, media.duration - 0.04);
+    if (Math.abs(media.currentTime - target) > 0.025) media.currentTime = target;
+  };
+  useEffect(() => {
+    requestedTime.current = progress;
+    seekPortrait();
+  }, [progress]);
+
+  const position = headlinePosition(progress);
+  const slide = Math.round(position);
+  const hasVideo = Boolean(profile.portraitVideo) && !videoFailed;
+  // A video contains the actual head turn. Flat images get only a subtle tilt.
+  const turn = hasVideo ? 0 : Math.sin(progress * Math.PI * 2) * (profile.portraitImage ? 12 : 38);
+
+  return (
+    <section ref={sequence} className={`hero-sequence ${reduced ? 'hero-sequence-static' : ''}`} id="home" aria-label="Introduction">
+      <div ref={stage} className="hero hero-pinned" data-progress={progress.toFixed(3)} onPointerMove={event => {
+        if (stopped || event.pointerType === 'touch') return;
+        const bounds = event.currentTarget.getBoundingClientRect();
+        event.currentTarget.style.setProperty('--mx', `${(event.clientX - bounds.left - bounds.width / 2) * 0.035}px`);
+        event.currentTarget.style.setProperty('--my', `${(event.clientY - bounds.top - bounds.height / 2) * 0.035}px`);
+      }}>
+        <div className="spotlight" />
+        <div className="portrait-stage" aria-hidden="true">
+          <div className="portrait-placeholder" style={{ '--turn': `${turn}deg` }}>
+            {hasVideo ? (
+              <video ref={video} src={profile.portraitVideo} poster={profile.portraitImage || undefined}
+                muted playsInline preload="auto" onLoadedMetadata={seekPortrait} onLoadedData={seekPortrait}
+                onSeeked={seekPortrait} onError={() => setVideoFailed(true)} />
+            ) : profile.portraitImage ? <img src={profile.portraitImage} alt="" /> : <span className="portrait-initial">N</span>}
+          </div>
+        </div>
+        <div className="hero-title">
+          <p className="eyebrow">{profile.name.toUpperCase()} / ENGINEER & FOUNDER</p>
+          <h1 className="scroll-headlines" aria-label="Software engineer, full-stack developer, founder and builder">
+            {headlines.map((lines, index) => {
+              const distance = index - position;
+              const opacity = clamp(1 - Math.abs(distance));
+              return <span key={index} className="headline scroll-headline" aria-hidden="true" style={{
+                opacity, visibility: opacity === 0 ? 'hidden' : 'visible',
+                transform: `translateY(${distance * 28}px)`, filter: `blur(${Math.abs(distance) * 5}px)`,
+              }}>{lines.map(line => <span key={line}>{line}</span>)}</span>;
+            })}
+          </h1>
+        </div>
+        <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · WEB · MOBILE</span></div>
+        <a className="scroll-cue" href="#about"><span>↓</span> {progress < 0.98 && !reduced ? 'SCROLL TO EXPLORE' : 'DISCOVER MY BACKGROUND'}</a>
+        <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><button className="outline" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
+        <div className="hero-index"><span>{String(slide + 1).padStart(2, '0')}</span><i />03</div>
+        {!reduced && <div className="hero-scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }} /></div>}
+      </div>
+    </section>
+  );
 }
