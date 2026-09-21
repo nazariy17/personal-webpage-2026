@@ -61,3 +61,30 @@
   .hero-sequence .scroll-cue { bottom: 23px; }
   .hero-sequence .hero-index { display: none; }
 }
+
+/* Preserve the supplied cutout's full framing rather than cropping its head. */
+.hero-sequence .portrait-stage-with-photo {
+  top: 14%;
+  height: 86%;
+}
+.hero-sequence .portrait-stage-with-photo .portrait-placeholder {
+  height: 100%;
+  width: 100%;
+  mask-image: linear-gradient(black 73%, transparent 100%);
+}
+.hero-sequence .portrait-stage-with-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+@media (max-width: 650px) {
+  .hero-sequence .portrait-stage-with-photo {
+    left: 36%;
+    top: 36%;
+    width: 75%;
+    height: 58%;
+    mask-image: linear-gradient(to right, transparent, black 27%);
+  }
+}

@@ -28,7 +28,10 @@
 
 /* Keep the introduction compact and let the copy use its available column. */
 .about.section {
-  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(24px, 6vw, 200px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: clamp(32px, 4.5vw, 72px);
   align-items: start;
   padding-top: 80px;
@@ -36,7 +39,9 @@
 }
 .about.section .about-card {
   width: 100%;
-  max-width: 300px;
+  max-width: none;
+  aspect-ratio: 4 / 3;
+  max-height: 560px;
   margin: 8px 0 0;
 }
 .about.section .about-copy { min-width: 0; }
@@ -62,10 +67,30 @@
 }
 @media (max-width: 760px) {
   .about.section { grid-template-columns: 1fr; gap: 40px; padding-block: 56px; }
-  .about.section .about-card { width: 220px; margin: 0 auto; }
+  .about.section .about-card { width: 100%; max-width: 520px; margin: 0 auto; }
   .about.section .card-monogram { font-size: 150px; }
   .about.section .small-label { font-size: 9px; letter-spacing: .5px; }
   .about.section .card-caption { padding: 12px 10px; font-size: 11px; }
   .about.section .about-copy h2 { font-size: clamp(30px, 7.5vw, 40px); }
   .about.section .disciplines { justify-content: space-between; gap: 12px; }
+}
+
+
+/* The background portrait fills the existing wide About card. */
+.about.section .about-card-with-photo {
+  overflow: hidden;
+  isolation: isolate;
+}
+.about.section .about-card-with-photo .about-portrait {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  z-index: -1;
+}
+.about.section .about-card-with-photo .small-label {
+  position: relative;
+  color: #17222e;
 }

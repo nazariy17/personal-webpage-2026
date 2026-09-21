@@ -91,13 +91,13 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
         event.currentTarget.style.setProperty('--my', `${(event.clientY - bounds.top - bounds.height / 2) * 0.035}px`);
       }}>
         <div className="spotlight" />
-        <div className="portrait-stage" aria-hidden="true">
+        <div className={`portrait-stage ${profile.portraitImage ? 'portrait-stage-with-photo' : ''}`} aria-hidden="true">
           <div className="portrait-placeholder" style={portraitStyle}>
             {hasVideo ? (
               <video ref={video} src={profile.portraitVideo || undefined} poster={profile.portraitImage || undefined}
                 muted playsInline preload="auto" onLoadedMetadata={seekPortrait} onLoadedData={seekPortrait}
                 onSeeked={seekPortrait} onError={() => setVideoFailed(true)} />
-            ) : profile.portraitImage ? <img src={profile.portraitImage} alt="" /> : <span className="portrait-initial">N</span>}
+            ) : profile.portraitImage ? <img src={profile.portraitImage} alt="" fetchPriority="high" decoding="async" /> : <span className="portrait-initial">N</span>}
           </div>
         </div>
         <div className="hero-title">

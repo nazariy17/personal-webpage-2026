@@ -2,6 +2,7 @@ export interface Profile {
   name: string;
   role: string;
   portraitImage: string | null;
+  aboutImage: string | null;
   portraitVideo: string | null;
   email: string | null;
   linkedin: string | null;
@@ -30,7 +31,8 @@ export interface Project {
 export const profile: Profile = {
   name: 'Nazar',
   role: 'Software Engineer · Product Thinker · Founder',
-  portraitImage: null,
+  portraitImage: '/images/nazar-portrait-transparent.png',
+  aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: null,
   linkedin: null,
@@ -43,7 +45,7 @@ export const profile: Profile = {
 };
 
 export const personal = {
-  background: 'Born in Ukraine, shaped by many years in Portugal, and now based in southern Germany. Living and working across countries has influenced how I communicate, collaborate, and think about products and organisations.',
+  background: 'I grew up, lived, and worked across Portugal and Germany, which has given me an international perspective on collaboration, product development, and working with people from different backgrounds.',
   everyday: 'I’m a father of three. Away from software, I make time for cycling, travel, and building things — from side projects to something practical at home.',
   interests: [
     { title: 'Aviation', description: 'Working toward an EASA LAPL, studying flight theory and radio communication.' },
