@@ -30,17 +30,17 @@ export interface Project {
 // Add portrait assets to public/ and set portraitImage or portraitVideo below.
 export const profile: Profile = {
   name: 'Nazar',
-  role: 'Software Engineer · Product Thinker · Founder',
+  role: "Software Engineering · Architecture · Technical Leadership",
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: null,
   linkedin: null,
-  introduction: 'I connect software engineering with product thinking and a founder’s perspective, with a growing focus on AI-assisted development and technical leadership.',
+  introduction: "I translate business and product requirements into technical solutions across architecture, APIs, integrations, and delivery. With enterprise and founder experience, I coordinate decisions across teams and stakeholders, grounded in code, CI/CD, and system constraints.",
   bio: [
     'I’m a software engineer and former startup founder, currently working on business-critical software in the Mercedes-Benz environment. My background spans iOS, modern web applications, backend services, integrations, databases, and Kubernetes.',
     'Before enterprise engineering, I co-founded and ran Softrino in Portugal. We were accepted into the Startup Lisboa community, and I represented the company at startup and technology events.',
-    'My work increasingly extends beyond implementation: technical decisions, architecture discussions, PR reviews, requirements, and helping people work through engineering problems. I’m especially interested in where product thinking, AI-assisted development, and technical leadership meet.'
+    'My work increasingly connects business requirements with architecture and delivery: coordinating technical decisions, discussing system constraints, reviewing code, and helping teams move from requirements to implementation. Product thinking and AI-assisted engineering remain part of that work.'
   ],
 };
 

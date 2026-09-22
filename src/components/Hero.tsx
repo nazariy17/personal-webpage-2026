@@ -12,9 +12,9 @@ type PortraitStyle = CSSProperties & { '--turn': string };
 import './Hero.css';
 
 const headlines = [
-  ['SOFTWARE', 'ENGINEER.'],
-  ['PRODUCT', 'THINKER.'],
-  ['FOUNDER.', 'BUILDER.'],
+  ['SOFTWARE', 'ENGINEERING.'],
+  ['ARCHITECTURE.'],
+  ['TECHNICAL', 'LEADERSHIP.'],
 ];
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smoothstep = (value: number) => value * value * (3 - 2 * value);
@@ -101,8 +101,8 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
           </div>
         </div>
         <div className="hero-title">
-          <p className="eyebrow">{profile.name.toUpperCase()} / ENGINEERING · PRODUCT</p>
-          <h1 className="scroll-headlines" aria-label="Software engineer, product thinker, founder and builder">
+          <p className="eyebrow">{profile.name.toUpperCase()} / BUSINESS · ENGINEERING · DELIVERY</p>
+          <h1 className="scroll-headlines" aria-label={profile.role}>
             {headlines.map((lines, index) => {
               const distance = index - position;
               const opacity = clamp(1 - Math.abs(distance));
@@ -113,7 +113,7 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
             })}
           </h1>
         </div>
-        <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · WEB · MOBILE</span></div>
+        <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · ENTREPRENEURSHIP</span></div>
         <a className="scroll-cue" href="#about"><span>↓</span> {progress < 0.98 && !reduced ? 'SCROLL TO EXPLORE' : 'DISCOVER MY BACKGROUND'}</a>
         <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><button className="outline" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
         <div className="hero-index"><span>{String(slide + 1).padStart(2, '0')}</span><i />03</div>

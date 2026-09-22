@@ -17,7 +17,7 @@ function Intro({ reduced }: { reduced: boolean }) {
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [reduced]);
-  return <div className={`loader ${done ? 'done' : ''}`} aria-hidden="true"><span>PERSONAL PORTFOLIO</span><div><strong>{profile.name.toUpperCase()}</strong><p>ENGINEERING · PRODUCT · ENTREPRENEURSHIP</p><b>{progress}%</b></div><span>WELCOME</span></div>;
+  return <div className={`loader ${done ? 'done' : ''}`} aria-hidden="true"><span>PERSONAL PORTFOLIO</span><div><strong>{profile.name.toUpperCase()}</strong><p>{profile.role.toUpperCase()}</p><b>{progress}%</b></div><span>WELCOME</span></div>;
 }
 function Navigation() {
   return <header className="site-header"><a className="brand" href="#home">{profile.name}<span className="brand-period">.</span></a><nav aria-label="Main navigation">{['About', 'Experience', 'Skills', 'Projects'].map(item => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav><a className="contact-link" href="#contact">Get in touch <span>↗</span></a></header>;

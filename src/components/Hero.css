@@ -88,3 +88,17 @@
     mask-image: linear-gradient(to right, transparent, black 27%);
   }
 }
+
+/* Give the longer positioning copy room without changing the hero composition. */
+.hero-sequence .hero-description { width: clamp(230px, 22vw, 320px); }
+@media (max-width: 650px) {
+  .hero-sequence .hero-description { width: 50%; top: 45%; font-size: 14px; line-height: 1.5; }
+  .hero-sequence .hero-title { right: 7%; }
+  .hero-sequence .hero-title .eyebrow { max-width: 100%; line-height: 1.5; }
+  .hero-sequence h1 { font-size: clamp(30px, 9.6vw, 58px); }
+}
+
+@media (max-width: 360px) {
+  .hero-sequence .hero-description { top: 42%; line-height: 1.45; }
+}
+
