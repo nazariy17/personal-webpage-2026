@@ -88,6 +88,7 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
         event.currentTarget.style.setProperty('--mx', `${(event.clientX - bounds.left - bounds.width / 2) * 0.035}px`);
         event.currentTarget.style.setProperty('--my', `${(event.clientY - bounds.top - bounds.height / 2) * 0.035}px`);
       }}>
+        <div className="hero-alpine-background" aria-hidden="true" />
         <div className="spotlight" />
         <div className={`portrait-stage ${profile.portraitImage ? 'portrait-stage-with-photo' : ''}`} aria-hidden="true">
           <div className="portrait-placeholder" style={portraitStyle}>
