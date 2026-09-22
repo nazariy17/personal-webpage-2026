@@ -20,13 +20,10 @@ const headlines = [
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smoothstep = (value: number) => value * value * (3 - 2 * value);
 
-// Headline holds are separated by short, reversible scroll crossfades.
+// Each half of the shortened scroll range transitions to the next headline.
 function headlinePosition(progress: number) {
-  if (progress < 0.26) return 0;
-  if (progress < 0.38) return smoothstep((progress - 0.26) / 0.12);
-  if (progress < 0.64) return 1;
-  if (progress < 0.76) return 1 + smoothstep((progress - 0.64) / 0.12);
-  return 2;
+  const position = progress * 2;
+  return position < 1 ? smoothstep(position) : 1 + smoothstep(position - 1);
 }
 
 export default function Hero({ reduced, paused, setPaused }: HeroProps) {
@@ -102,7 +99,7 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
           </div>
         </div>
         <div className="hero-title">
-          <p className="eyebrow">{profile.name.toUpperCase()} / BUSINESS · ENGINEERING · DELIVERY</p>
+          <p className="eyebrow">NAZARIY BOHUN / BUSINESS · ENGINEERING · DELIVERY</p>
           <h1 className="scroll-headlines" aria-label={profile.role}>
             {headlines.map((lines, index) => {
               const distance = index - position;

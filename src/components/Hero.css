@@ -1,7 +1,7 @@
 /* Scroll distance belongs to the wrapper; the hero stays pinned inside it. */
 .hero-sequence {
   position: relative;
-  height: 300svh;
+  height: 125svh;
 }
 .hero-sequence .hero-pinned {
   position: sticky;
@@ -43,7 +43,7 @@
   height: max(760px, 100svh);
 }
 @media (max-width: 650px) {
-  .hero-sequence { height: 280svh; }
+  .hero-sequence { height: auto; }
   .hero-sequence .hero-title { top: 25%; }
   .hero-sequence .hero-description { top: 51%; }
   .hero-sequence .hero-actions { bottom: 76px; }
@@ -102,3 +102,33 @@
   .hero-sequence .hero-description { top: 42%; line-height: 1.45; }
 }
 
+
+/* Content determines the height on smaller screens; only 20svh is pin travel. */
+@media (max-width: 900px), (max-height: 600px) {
+  .hero-sequence { height: auto; padding-bottom: 20svh; }
+  .hero-sequence .hero-pinned {
+    height: auto;
+    min-height: 100svh;
+    padding: calc(var(--navigation-height) + 48px) 7% 76px;
+  }
+  .hero-sequence .hero-title { position: relative; inset: auto; }
+  .hero-sequence .hero-title .eyebrow { max-width: 100%; line-height: 1.5; }
+  .hero-sequence .hero-description {
+    display: block;
+    position: relative;
+    inset: auto;
+    width: 50%;
+    margin-top: 32px;
+  }
+  .hero-sequence .hero-actions {
+    position: relative;
+    inset: auto;
+    max-width: 100%;
+    margin-top: 28px;
+  }
+  .hero-sequence .hero-index { bottom: 28px; }
+  .hero-sequence-static { padding-bottom: 0; }
+}
+/* Reduced motion has no extra pin spacer on any viewport. */
+.hero-sequence-static { height: auto; }
+.hero-sequence-static .hero-pinned { position: relative; }
