@@ -1,0 +1,36 @@
+/* Contact uses the existing type, borders, colors and reveal animation. */
+.contact-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-width: 44px; min-height: 44px; transition: color .2s, border-color .2s; }
+.contact-action svg { flex: 0 0 20px; }
+.contact-action[aria-disabled="true"] { color: var(--muted); cursor: default; }
+a.contact-action:hover { color: #fff; border-color: #fff; }
+.site-header .navigation-linkedin { width: 44px; height: 44px; }
+.site-header nav a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+.hero-actions { align-items: center; flex-wrap: wrap; }
+.hero-actions .hero-linkedin { gap: 8px; }
+.hero-actions .hero-linkedin svg { display: none; }
+.hero-motion-control { background: none; border: 0; padding: 10px 4px; min-height: 44px; color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+.hero-motion-control:hover:not(:disabled) { color: var(--ink); }
+.hero-motion-control:disabled { cursor: default; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.contact-section h2 { font-size: clamp(48px, 6.5vw, 104px); line-height: 1; letter-spacing: -.055em; font-weight: 600; margin: 0; }
+.contact-details > p { margin: 0; max-width: 540px; font-size: 18px; line-height: 1.7; color: var(--muted); }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 16px 32px; margin-top: 28px; }
+.contact-actions .contact-action { padding: 12px 0; border-bottom: 1px solid #ffffff45; font-size: 18px; }
+.contact-details .contact-pending { margin-top: 20px; font-size: 13px; }
+@media (max-width: 900px) {
+  .hero-actions { max-width: 350px; }
+  .hero-motion-control { flex-basis: 100%; text-align: right; }
+}
+@media (max-width: 650px) {
+  .site-header nav { gap: 0; justify-content: space-between; padding: 0 4%; }
+  .site-header nav a { padding: 0 5px; font-size: 12px; }
+  .hero-actions { max-width: 86%; gap: 4px 12px; }
+  .hero-motion-control { text-align: left; }
+  .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+  .contact-details > p { font-size: 16px; }
+}
+@media (max-width: 360px) {
+  .contact-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+.hero-actions .hero-linkedin { display: inline-flex; }

@@ -34,8 +34,8 @@ export const profile: Profile = {
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
-  email: null,
-  linkedin: null,
+  email: 'nazariy17@gmail.com',
+  linkedin: 'https://de.linkedin.com/in/nazariybohun',
   introduction: "I translate business and product requirements into technical solutions across architecture, APIs, integrations, and delivery. With enterprise and founder experience, I coordinate decisions across teams and stakeholders, grounded in code, CI/CD, and system constraints.",
   bio: [
     'I’m a software engineer and former startup founder, currently working on business-critical software in the Mercedes-Benz environment. My background spans iOS, modern web applications, backend services, integrations, databases, and Kubernetes.',

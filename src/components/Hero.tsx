@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { profile } from '../content';
+import ContactAction from './ContactAction';
 import type { CSSProperties } from 'react';
 
 interface HeroProps {
@@ -115,7 +116,7 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
         </div>
         <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · ENTREPRENEURSHIP</span></div>
         <a className="scroll-cue" href="#about"><span>↓</span> {progress < 0.98 && !reduced ? 'SCROLL TO EXPLORE' : 'DISCOVER MY BACKGROUND'}</a>
-        <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><button className="outline" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
+        <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><ContactAction kind="linkedin" className="outline hero-linkedin" /><button className="hero-motion-control" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
         <div className="hero-index"><span>{String(slide + 1).padStart(2, '0')}</span><i />03</div>
         {!reduced && <div className="hero-scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }} /></div>}
       </div>
