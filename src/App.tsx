@@ -11,16 +11,12 @@ import { useReducedMotion } from './hooks/useReducedMotion';
 import './content-sections.css';
 function Intro({ reduced }: { reduced: boolean }) {
   const [done, setDone] = useState(reduced);
-  const [progress, setProgress] = useState(0);
   useEffect(() => {
     if (reduced) { setDone(true); return; }
-    let frame: number;
-    const start = performance.now();
-    const tick = (now: number) => { const value = Math.min(100, Math.round((now - start) / 9)); setProgress(value); if (value < 100) frame = requestAnimationFrame(tick); else setDone(true); };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    const timer = window.setTimeout(() => setDone(true), 900);
+    return () => window.clearTimeout(timer);
   }, [reduced]);
-  return <div className={`loader ${done ? 'done' : ''}`} aria-hidden="true"><span>PERSONAL PORTFOLIO</span><div><strong>{profile.name.toUpperCase()}</strong><p>{profile.role.toUpperCase()}</p><b>{progress}%</b></div><span>WELCOME</span></div>;
+  return <div className={`loader ${done ? 'done' : ''}`} aria-hidden="true"><span>PERSONAL PORTFOLIO</span><div><strong>{profile.name.toUpperCase()}</strong><p>{profile.role.toUpperCase()}</p></div><span>WELCOME</span></div>;
 }
 function Navigation() {
   return <header className="site-header"><a className="brand" href="#home">{profile.name}<span className="brand-period">.</span></a><nav aria-label="Main navigation">{['About', 'Experience', 'Skills', 'Projects', 'Contact'].map(item => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav><ContactAction kind="linkedin" className="navigation-linkedin" iconOnly /></header>;
