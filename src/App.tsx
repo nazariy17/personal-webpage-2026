@@ -45,7 +45,7 @@ function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
   return <section className="section projects" id="projects"><Reveal className="section-heading"><p className="eyebrow">04 / PERSONAL PROJECTS</p><h2>Exploring what comes next.</h2><p>Two personal projects in development, extending my engineering experience into AI and aviation.</p></Reveal><div className="project-grid project-grid-pair">{projects.map((project, i) => <Reveal key={project.id}><button className="project-card" onClick={() => onSelect(project)}><span className="project-top">0{project.id} / {project.category.toUpperCase()} <span>↗</span></span><div className={`project-art art-${['one', 'two', 'three'][i]}`} aria-hidden="true"><span>0{project.id}</span></div><h3>{project.title}</h3><p>{project.summary}</p><span className="project-bottom">{project.status.toUpperCase()} <span>+</span></span></button></Reveal>)}</div></section>;
 }
 function Footer() {
-  return <footer><div className="footer-name" aria-hidden="true">{profile.name.toUpperCase()}</div><div className="footer-bottom"><span>© {new Date().getFullYear()} {profile.name}</span><span>{profile.role.toUpperCase()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>;
+  return <footer><div className="footer-bottom"><span>© {new Date().getFullYear()} {profile.name}</span><span>{profile.role.toUpperCase()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>;
 }
 export default function App() {
   const reduced = useReducedMotion();
