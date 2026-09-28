@@ -8,7 +8,8 @@ export default function Contact() {
     <Reveal className="contact-grid">
       <div><p className="eyebrow">05 / CONTACT</p><h2 id="contact-heading">LET’S TALK.</h2></div>
       <div className="contact-details">
-        <p>Open to conversations about software engineering, technical leadership, product and AI-enabled engineering.</p>
+        <p>My primary focus is Technical Product Owner roles for software and platforms. I’m also open to senior software engineering and technical leadership opportunities, particularly where I can grow into applied AI, LLM applications and AI enablement.</p>
+        <p>Portuguese / EU citizen, based in Germany and open to relocation to German-speaking Switzerland.</p>
         <div className="contact-actions"><ContactAction kind="email" /><ContactAction kind="linkedin" /></div>
         {missing.length > 0 && <p className="contact-pending">{missing.join(' and ')} details coming soon.</p>}
       </div>

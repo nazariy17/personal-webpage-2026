@@ -1,4 +1,15 @@
 /* Small content additions using the existing portfolio typography and surfaces. */
+.skill-groups { display: grid; gap: 36px; }
+.skill-group { border-top: 1px solid var(--line); padding-top: 24px; }
+.skill-group h3 { margin: 0 0 12px; font-size: 24px; font-weight: 600; }
+.skill-group > p { margin: 0 0 20px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+.about.section .disciplines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.about.section .disciplines span { font-size: 14px; line-height: 1.5; }
+.experience-list article > div { min-width: 0; }
+.experience-list h3 { overflow-wrap: anywhere; }
+@media (max-width: 420px) {
+  .about.section .disciplines { grid-template-columns: 1fr; }
+}
 .beyond { padding-top: 64px; padding-bottom: 72px; }
 .beyond-introduction { display: grid; grid-template-columns: .85fr 1.3fr; gap: 10%; }
 .beyond .section-heading { margin-bottom: 24px; }

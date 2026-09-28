@@ -37,7 +37,7 @@ Set `profile.email` and `profile.linkedin` when ready. No contact destinations a
 
 ## Content status
 
-Career copy is provisional, based on prior conversation details; the source CV has not yet been supplied in this task. Project titles and case studies are placeholders as requested. Replace them in `src/content.ts` before making the portfolio public.
+Career copy is aligned with the September 2026 LinkedIn export and the agreed target roles: Technical Product Ownership as the primary direction, senior software engineering / technical leadership as the established parallel path, and applied AI as the growth direction. Current employment remains Senior Software Engineer. The two personal projects are explicitly in development; planned capabilities are not production-experience claims.
 
 ## Accessibility
 
