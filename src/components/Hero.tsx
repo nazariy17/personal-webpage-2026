@@ -13,9 +13,9 @@ type PortraitStyle = CSSProperties & { '--turn': string };
 import './Hero.css';
 
 const headlines = [
+  ['PRODUCT', 'OWNERSHIP.'],
   ['SOFTWARE', 'ENGINEERING.'],
-  ['ARCHITECTURE.'],
-  ['TECHNICAL', 'LEADERSHIP.'],
+  ['APPLIED AI.'],
 ];
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smoothstep = (value: number) => value * value * (3 - 2 * value);
@@ -100,7 +100,7 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
           </div>
         </div>
         <div className="hero-title">
-          <p className="eyebrow">NAZARIY BOHUN / BUSINESS · ENGINEERING · DELIVERY</p>
+          <p className="eyebrow">NAZARIY BOHUN / PRODUCT · ENGINEERING · APPLIED AI</p>
           <h1 className="scroll-headlines" aria-label={profile.role}>
             {headlines.map((lines, index) => {
               const distance = index - position;
@@ -112,9 +112,9 @@ export default function Hero({ reduced, paused, setPaused }: HeroProps) {
             })}
           </h1>
         </div>
-        <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">ENTERPRISE · ENTREPRENEURSHIP</span></div>
+        <div className="hero-description"><span className="description-rule" /><p>{profile.introduction}</p><span className="hero-specialism">OPEN TO RELOCATION TO SWITZERLAND</span></div>
         <a className="scroll-cue" href="#about"><span>↓</span> {progress < 0.98 && !reduced ? 'SCROLL TO EXPLORE' : 'DISCOVER MY BACKGROUND'}</a>
-        <div className="hero-actions"><a className="button" href="#projects">Explore work <span>↗</span></a><ContactAction kind="linkedin" className="outline hero-linkedin" /><button className="hero-motion-control" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
+        <div className="hero-actions"><a className="button" href="#experience">View experience <span>↗</span></a><ContactAction kind="linkedin" className="outline hero-linkedin" /><button className="hero-motion-control" onClick={() => setPaused(!paused)} disabled={reduced} aria-pressed={stopped}>{reduced ? 'Motion reduced' : paused ? 'Resume motion' : 'Pause motion'}</button></div>
         <div className="hero-index"><span>{String(slide + 1).padStart(2, '0')}</span><i />03</div>
         {!reduced && <div className="hero-scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${progress})` }} /></div>}
       </div>

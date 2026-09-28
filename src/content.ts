@@ -16,6 +16,12 @@ export interface Experience {
   description: string;
 }
 
+export interface SkillGroup {
+  title: string;
+  description: string;
+  items: string[];
+}
+
 export interface Project {
   id: number;
   title: string;
@@ -26,27 +32,29 @@ export interface Project {
   status: 'In development';
 }
 
-// Portfolio copy supplied and approved for use by the owner.
+// Career positioning aligned with the September 2026 LinkedIn profile review.
 // Add portrait assets to public/ and set portraitImage or portraitVideo below.
 export const profile: Profile = {
   name: 'Nazar',
-  role: "Software Engineering · Architecture · Technical Leadership",
+  role: 'Technical Product Ownership · Software Engineering · Applied AI',
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: 'nazariy17@gmail.com',
   linkedin: 'https://de.linkedin.com/in/nazariybohun',
-  introduction: "I translate business and product requirements into technical solutions across architecture, APIs, integrations, and delivery. With enterprise and founder experience, I coordinate decisions across teams and stakeholders, grounded in code, CI/CD, and system constraints.",
+  introduction: 'Senior Software Engineer and former co-founder pursuing Technical Product Owner roles. I connect requirements, priorities and technical delivery, drawing on enterprise engineering and client-facing experience while developing my applied AI capabilities.',
   bio: [
-    'I’m a software engineer and former startup founder, currently working on business-critical software in the Mercedes-Benz environment. My background spans iOS, modern web applications, backend services, integrations, databases, and Kubernetes.',
-    'Before enterprise engineering, I co-founded and ran Softrino in Portugal. We were accepted into the Startup Lisboa community, and I represented the company at startup and technology events.',
-    'My work increasingly connects business requirements with architecture and delivery: coordinating technical decisions, discussing system constraints, reviewing code, and helping teams move from requirements to implementation. Product thinking and AI-assisted engineering remain part of that work.'
+    'I’m a Senior Software Engineer with 15+ years across enterprise, automotive, mobile and web software, including work in the Daimler / Mercedes-Benz environment since 2017. Technical Product Ownership is my primary career direction, backed by hands-on engineering and founder experience.',
+    'At Mercedes-Benz Tech Innovation, I work with Product Owners to clarify requirements, write and refine user and technical stories, and support backlog prioritization. My current work combines a vehicle-order-management platform with architecture, integrations and delivery responsibilities.',
+    'Earlier, I co-founded Softrino in Lisbon, working directly with clients on requirements, estimates and priorities, and coordinating delivery through implementation, testing, release and support.',
+    'Senior engineering and technical leadership remain a parallel path. Applied AI is my growth direction: I use AI-assisted and agentic engineering tools daily, contributed the React frontend of an internal AI prototype, and am exploring an experimental engineering assistant.',
+    'Portuguese / EU citizen, based in Germany and open to relocation to German-speaking Switzerland.'
   ],
 };
 
 export const personal = {
   background: 'I grew up, lived, and worked across Portugal and Germany, which has given me an international perspective on collaboration, product development, and working with people from different backgrounds.',
-  everyday: 'I’m a father of three. Away from software, I make time for cycling, travel, and building things — from side projects to something practical at home.',
+  everyday: 'I’m a father of three. Away from software, I make time for cycling, travel, and building things, from side projects to something practical at home.',
   interests: [
     { title: 'Aviation', description: 'Working toward an EASA LAPL, studying flight theory and radio communication.' },
     { title: 'Photography', description: 'Portrait, travel, and aviation photography.' },
@@ -55,24 +63,36 @@ export const personal = {
   ],
 };
 
-export const skills: string[] = [
-  'Angular', 'TypeScript', 'JavaScript', 'Java', 'Kotlin', 'Swift', 'iOS', 'React',
-  'PostgreSQL', 'REST APIs', 'Kubernetes', 'Git', 'Full-stack development',
-  'Domain-Driven Design', 'AI-assisted software engineering',
+export const skills: SkillGroup[] = [
+  {
+    title: 'Product & delivery',
+    description: 'Experience supporting Product Owners and coordinating client delivery.',
+    items: ['Requirements analysis', 'User stories & refinement', 'Backlog prioritization support', 'Stakeholder communication', 'Estimation & scope', 'Scrum facilitation', 'Technical delivery'],
+  },
+  {
+    title: 'Software engineering',
+    description: 'The technical foundation I bring to product decisions and delivery.',
+    items: ['Kotlin', 'Java', 'Spring Boot', 'Angular', 'TypeScript', 'React', 'Swift / iOS', 'PostgreSQL', 'REST APIs', 'Kafka', 'Docker', 'Kubernetes', 'CI/CD', 'Domain-Driven Design'],
+  },
+  {
+    title: 'Applied AI',
+    description: 'Daily AI-assisted engineering, prototype work and ongoing exploration of LLM applications.',
+    items: ['AI-assisted engineering', 'Agentic development workflows', 'AI prototype frontend', 'Exploring LLM agents', 'Exploring tools / MCP integrations'],
+  },
 ];
 
 export const experience: Experience[] = [
   {
-    company: 'Mercedes-Benz', area: 'Enterprise engineering',
-    description: 'Business-critical software across frontend applications, backend services, APIs, integrations, databases, and cloud/Kubernetes environments. The work combines technical decisions, collaboration, and problem solving with a clear understanding of business workflows.',
+    company: 'Mercedes-Benz Tech Innovation', area: 'Senior Software Engineer · Dec 2018–present',
+    description: 'Work with Product Owners on requirements, stories, implementation scope and prioritization. Contribute to a vehicle-order-management platform using Angular, Kotlin / Spring Boot and PostgreSQL, modernizing inherited code toward DDD. Took ownership of migrating 2 repositories, 2 services and approximately 15 CI/CD workflows. Regularly facilitated Scrum events during six months of rotating team responsibility, and owned the React frontend of an internal AI prototype.',
   },
   {
-    company: 'Softrino', area: 'Entrepreneurship · Portugal',
-    description: 'Co-founded and ran a software company, working directly with customers and taking ownership of product delivery. Part of the Startup Lisboa ecosystem, with experience representing the company at startup and technology events.',
+    company: 'Softrino', area: 'Co-Founder · Technical & Delivery Lead · 2011–2017',
+    description: 'Worked directly with international clients to clarify requirements, prepare estimates and agree priorities. Coordinated mobile and web delivery from implementation through testing, release and support. Recruited and mentored developers within a five-person core team, with approximately ten people involved at peak including students, contractors and external contributors.',
   },
   {
-    company: 'Mobile & Web', area: 'Product development',
-    description: 'A foundation in iOS applications that expanded into modern web interfaces, backend services, APIs, and full-stack product development. Experience connecting implementation decisions with the needs of the product.',
+    company: 'Questax / Daimler TSS', area: 'Senior iOS Software Engineer · Oct 2017–Nov 2018',
+    description: 'Developed a connected private car-sharing product for Mercedes-Benz vehicles, with App Store release responsibility and Java backend contributions. Simplified an overcomplicated state architecture to address asynchronous consistency problems and reduce unnecessary API interactions. Collaborated with the Product Owner and engineering team on requirements and implementation decisions.',
   },
 ];
 
