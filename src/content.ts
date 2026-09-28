@@ -8,6 +8,7 @@ export interface Profile {
   linkedin: string | null;
   introduction: string;
   bio: string[];
+  languages: string;
 }
 
 export interface Experience {
@@ -35,31 +36,32 @@ export interface Project {
 // Career positioning aligned with the September 2026 LinkedIn profile review.
 // Add portrait assets to public/ and set portraitImage or portraitVideo below.
 export const profile: Profile = {
-  name: 'Nazar',
+  name: 'Nazariy Bohun',
   role: 'Technical Product Ownership · Software Engineering · Applied AI',
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: 'nazariy17@gmail.com',
   linkedin: 'https://de.linkedin.com/in/nazariybohun',
+  languages: 'German: intermediate (B1–B2, self-assessed) · English: professional working proficiency · Portuguese and Ukrainian: native',
   introduction: 'Senior Software Engineer and former co-founder pursuing Technical Product Owner roles. I connect requirements, priorities and technical delivery, drawing on enterprise engineering and client-facing experience while developing my applied AI capabilities.',
   bio: [
     'I’m a Senior Software Engineer with 15+ years across enterprise, automotive, mobile and web software, including work in the Daimler / Mercedes-Benz environment since 2017. Technical Product Ownership is my primary career direction, backed by hands-on engineering and founder experience.',
-    'At Mercedes-Benz Tech Innovation, I work with Product Owners to clarify requirements, write and refine user and technical stories, and support backlog prioritization. My current work combines a vehicle-order-management platform with architecture, integrations and delivery responsibilities.',
+    'At Mercedes-Benz Tech Innovation, I work with Product Owners to clarify requirements, write and refine user and technical stories, and support backlog prioritization. On a vehicle-order-management platform, I help modernize inherited code toward Domain-Driven Design and contribute across architecture, integrations and delivery.',
     'Earlier, I co-founded Softrino in Lisbon, working directly with clients on requirements, estimates and priorities, and coordinating delivery through implementation, testing, release and support.',
-    'Senior engineering and technical leadership remain a parallel path. Applied AI is my growth direction: I use AI-assisted and agentic engineering tools daily, contributed the React frontend of an internal AI prototype, and am exploring an experimental engineering assistant.',
+    'Senior engineering and technical leadership remain a parallel path. Applied AI and GenAI applications are my growth direction: I use AI-assisted and agentic engineering tools daily, owned the React frontend of an internal AI prototype, and am exploring an experimental engineering assistant.',
     'Portuguese / EU citizen, based in Germany and open to relocation to German-speaking Switzerland.'
   ],
 };
 
 export const personal = {
-  background: 'I grew up, lived, and worked across Portugal and Germany, which has given me an international perspective on collaboration, product development, and working with people from different backgrounds.',
+  background: 'I have lived and worked in Portugal and Germany, which has given me an international perspective on collaboration, product development, and working with people from different backgrounds.',
   everyday: 'I’m a father of three. Away from software, I make time for cycling, travel, and building things, from side projects to something practical at home.',
   interests: [
     { title: 'Aviation', description: 'Working toward an EASA LAPL, studying flight theory and radio communication.' },
     { title: 'Photography', description: 'Portrait, travel, and aviation photography.' },
     { title: 'Motorcycling', description: 'Exploring Europe and the Alps on two wheels.' },
-    { title: 'Family & building', description: 'Father of three, always learning and building something.' },
+    { title: 'Family & building', description: 'Shared family adventures and practical projects at home.' },
   ],
 };
 
@@ -87,12 +89,12 @@ export const experience: Experience[] = [
     description: 'Work with Product Owners on requirements, stories, implementation scope and prioritization. Contribute to a vehicle-order-management platform using Angular, Kotlin / Spring Boot and PostgreSQL, modernizing inherited code toward DDD. Took ownership of migrating 2 repositories, 2 services and approximately 15 CI/CD workflows. Regularly facilitated Scrum events during six months of rotating team responsibility, and owned the React frontend of an internal AI prototype.',
   },
   {
-    company: 'Softrino', area: 'Co-Founder · Technical & Delivery Lead · 2011–2017',
-    description: 'Worked directly with international clients to clarify requirements, prepare estimates and agree priorities. Coordinated mobile and web delivery from implementation through testing, release and support. Recruited and mentored developers within a five-person core team, with approximately ten people involved at peak including students, contractors and external contributors.',
-  },
-  {
     company: 'Questax / Daimler TSS', area: 'Senior iOS Software Engineer · Oct 2017–Nov 2018',
     description: 'Developed a connected private car-sharing product for Mercedes-Benz vehicles, with App Store release responsibility and Java backend contributions. Simplified an overcomplicated state architecture to address asynchronous consistency problems and reduce unnecessary API interactions. Collaborated with the Product Owner and engineering team on requirements and implementation decisions.',
+  },
+  {
+    company: 'Softrino', area: 'Co-Founder · Technical & Delivery Lead · 2011–2017',
+    description: 'Worked directly with international clients to clarify requirements, prepare estimates and agree priorities. Coordinated mobile and web delivery from implementation through testing, release and support. Recruited and mentored developers within a five-person core team, with approximately ten people involved at peak including students, contractors and external contributors.',
   },
 ];
 
