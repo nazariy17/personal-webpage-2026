@@ -1,59 +1,59 @@
-# Nazar's Personal Portfolio
+# Nazariy Bohun · Personal Portfolio
 
-A React + TypeScript portfolio built with Vite. The design follows the supplied video reference: a dark cinematic hero, rotating headlines, spotlight movement, scroll reveals, project cards, and oversized typography.
+A personal portfolio implemented with **React 19, TypeScript and Vite 7**. It presents my professional experience, product/engineering focus and ongoing side-project work.
 
-## Getting started
+**Project status:** The portfolio website itself is implemented in this repository. The AI Engineering Agent and aviation project described on the website are **in development**, not completed production products.
 
-Install Node.js 20.19+ or 22.12+.
+## What is implemented
 
-```sh
+- Scroll-controlled introductory section with three rotating professional focus areas, a portrait photo and a progress indicator.
+- Responsive sections for background, experience, technical capabilities, projects and contact details.
+- Project detail dialogs, scroll-reveal effects, and LinkedIn/email contact links.
+- Motion controls and reduced-motion behaviour, keyboard focus affordances and a skip link.
+- TypeScript type checking as part of the build.
+
+The portrait **image is already included and configured** (`public/images/nazar-portrait-transparent.png`). A portrait-turn **video is not included**: `profile.portraitVideo` is currently `null`. Scroll interaction moves the existing image subtly, but does not simulate real video frames.
+
+## Run locally
+
+Use Node.js 20.19+ or a compatible newer version, and pnpm:
+
+```bash
 corepack enable
 pnpm install
 pnpm dev
 ```
 
-Open the local URL printed by Vite.
+Check types and build a production bundle:
 
-```sh
+```bash
 pnpm typecheck
 pnpm build
 pnpm preview
 ```
 
-The production output is generated in `dist/`.
+Vite outputs the production files to `dist/`.
 
-## Editing content
+## Project structure
 
-- `src/content.ts`: name, introduction, biography, skills, experience, projects, and contact links.
-- `src/App.tsx`: page sections and navigation.
-- `src/components/`: hero, scroll reveals, and accessible project dialog.
-- `src/hooks/`: reduced-motion preference handling.
-- `src/styles.css`: typography, colors, layouts, responsiveness, and animation.
-- `public/`: images, portrait video, and favicon.
+| Path | Purpose |
+| --- | --- |
+| `src/content.ts` | Profile, experience, capabilities, personal interests and project status |
+| `src/App.tsx` | Application page and section composition |
+| `src/components/Hero.tsx` | Scroll-controlled introduction and portrait behaviour |
+| `src/components/ProjectDialog.tsx` | Accessible project detail dialog |
+| `src/hooks/useReducedMotion.ts` | Reduced-motion preference |
+| `src/styles.css`, `src/components/*.css` | Responsive styling and effects |
+| `public/images/` | Portrait and visual assets |
 
-Set `profile.portraitImage` to `/portrait.webp`, and optionally `profile.portraitVideo` to `/portrait.mp4`, after placing those files in `public/`. The monogram remains the intentional fallback until a real portrait is supplied. A photo alone cannot reproduce a true head-turning video.
+## Edit and extend
 
-Set `profile.email` and `profile.linkedin` when ready. No contact destinations are invented.
+Professional content and contact details are configured in `src/content.ts`. The existing email, LinkedIn links and portrait image are already populated; there is no need to add placeholder values before using the website.
 
-## Content status
+An optional real head-turn video can be added later by placing the media in `public/` and setting `profile.portraitVideo`. Without a video, the implementation intentionally displays the still image.
 
-Career copy is aligned with the September 2026 LinkedIn export and the agreed target roles: Technical Product Ownership as the primary direction, senior software engineering / technical leadership as the established parallel path, and applied AI as the growth direction. Current employment remains Senior Software Engineer. The two personal projects are explicitly in development; planned capabilities are not production-experience claims.
-
-## Accessibility
-
-Semantic sections, a skip link, native modal focus handling and Escape support, visible focus indicators, responsive layouts, reduced-motion preference handling, and a motion pause button are included.
+The site describes AI-related exploration separately from completed engineering employment. Do not interpret the planned AI assistant as an existing deployed service.
 
 ## Hosting
 
-The existing Sites project is retained in `.openai/hosting.json`. Source files are separate from build output; credentials are never stored in this repository.
-
-
-## Scroll-controlled introduction
-
-The introduction is pinned for approximately two viewport heights of scrolling. Scroll position drives portrait movement, reversible headline crossfades, and the progress indicator. It does not advance on a timer. The next section follows normally after the sequence. Reduced-motion preferences disable pinning and show a static introduction; Pause motion freezes the visual sequence while leaving normal page scrolling available.
-
-For the actual head-turning effect, put a short portrait turn video in `public/` and set `profile.portraitVideo` in `src/content.ts`. The video playhead is scrubbed directly by scrolling, including in reverse; it never autoplays. A short browser-compatible MP4 with frequent keyframes is best for responsive seeking. Use `profile.portraitImage` as its poster/fallback. A still image receives only a subtle plane tilt and cannot show new views of a person's face. Until portrait assets are supplied, the monogram demonstrates the scroll-linked motion.
-
-## Type safety
-
-Strict TypeScript checks component props, content models, DOM refs, and event handling. `pnpm build` runs the type checker before generating production assets. Add or edit portfolio content in `src/content.ts`.
+The repository contains a static hosting configuration under `.openai/hosting.json`. A buildable repository is not, by itself, proof of a particular live deployment or uptime level.
