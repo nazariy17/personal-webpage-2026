@@ -8,12 +8,20 @@ interface HeroProps {
 }
 
 export default function Hero({ paused, reduced, onToggleMotion }: HeroProps) {
-  return <section className="hero" id="home" aria-labelledby="hero-heading">
-    <div className="hero-scenery" aria-hidden="true" />
+  return <section className="hero" id="home" aria-labelledby="hero-heading" onPointerMove={event => {
+    if (paused || reduced || event.pointerType !== 'mouse') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty('--scene-x', `${((event.clientX - bounds.left) / bounds.width - .5) * 20}px`);
+    event.currentTarget.style.setProperty('--scene-y', `${((event.clientY - bounds.top) / bounds.height - .5) * 12}px`);
+  }} onPointerLeave={event => {
+    event.currentTarget.style.setProperty('--scene-x', '0px');
+    event.currentTarget.style.setProperty('--scene-y', '0px');
+  }}>
+    <div className="hero-scenery-wrap" aria-hidden="true"><div className="hero-scenery" /></div>
     <div className="hero-inner">
       <div className="hero-copy">
         <p className="hero-kicker"><span className="signal-dot" />Nazariy Bohun <span className="kicker-divider">/</span> Senior Software Engineer</p>
-        <h1 id="hero-heading">Engineering.<br /><span>With ownership.</span></h1>
+        <h1 id="hero-heading" aria-label="Engineering. With ownership."><span className="hero-line" aria-hidden="true"><span>Engineering.</span></span><span className="hero-line hero-line-accent" aria-hidden="true"><span>With ownership.</span></span></h1>
         <p className="hero-description">{profile.introduction}</p>
         <div className="hero-actions"><a className="button" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a className="hero-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></div>
         <div className="hero-signature"><span className="signature-line" />Software. Solutions. Delivery.</div>

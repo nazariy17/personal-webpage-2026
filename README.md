@@ -40,10 +40,11 @@ Open the preview address printed in the terminal. Preview serves the production 
 | `src/components/Hero.css` | Responsive introduction layout |
 | `src/content-sections.css` | Achievements, career, capabilities and project layouts |
 | `src/contact.css` | Contact layout and links |
+| `src/motion.css` | Headline reveal, achievement-diagram entrances and optional radar interaction |
 | `index.html` | Page title, social metadata and Person structured data |
 | `public/images/` | Existing portrait and image assets |
 
-The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The original mountain background drifts slowly while the portrait remains stationary and unobscured, without orbit graphics, a glass caption or pointer transforms. The hero's Pause animation control pauses motion across the page. Content sections reveal as they enter the viewport; pausing exposes all sections immediately. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
+The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The original mountain background drifts slowly and responds subtly to a mouse pointer. The smaller portrait stays stationary and anchored to the cover bottom, without orbit graphics, a glass caption or portrait transforms. The headline reveals line by line, and achievement diagrams animate as their cards enter view. The hero's Pause animation control pauses motion across the page. Content sections reveal as they enter the viewport; pausing exposes all sections immediately. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
 
 The AI Engineering Agent and Planes Over Me are personal projects **in development**. Their descriptions distinguish current scope from planned exploration. The internal AI prototype case study describes frontend delivery, not ownership of its model or backend.
 

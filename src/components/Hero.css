@@ -1,5 +1,6 @@
-.hero { position: relative; isolation: isolate; overflow: hidden; background: var(--navy); color: #fff; }
-.hero-scenery { position: absolute; z-index: -3; inset: -24px; background: url('/images/hero-alpine-airplane.png') center 42% / cover no-repeat; animation: alpine-drift 24s ease-in-out infinite alternate; will-change: transform; }
+.hero { position: relative; isolation: isolate; overflow: clip; background: var(--navy); color: #fff; }
+.hero-scenery-wrap { position: absolute; z-index: -3; inset: -36px; pointer-events: none; transform: translate(var(--scene-x, 0px), var(--scene-y, 0px)); transition: transform 1s ease-out; }
+.hero-scenery { position: absolute; inset: 0; background: url('/images/hero-alpine-airplane.png') center 42% / cover no-repeat; animation: alpine-drift 24s ease-in-out infinite alternate; will-change: transform; }
 .hero::before { content: ''; position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, #09172499 2%, #09172455 42%, #09172400 80%), linear-gradient(0deg, #0e1b26 0%, #0e1b2600 40%, #0e1b2630); }
 .hero-inner { position: relative; max-width: calc(var(--content-width) + var(--gutter) * 2); min-height: 690px; margin-inline: auto; padding: 100px var(--gutter) 100px; }
 .hero-copy { position: relative; z-index: 3; width: 60%; max-width: 760px; }
@@ -7,7 +8,7 @@
 .signal-dot { flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-ink); box-shadow: 0 0 18px #e3061333; }
 .kicker-divider { color: #708492; margin-inline: 4px; }
 .hero h1 { font-size: clamp(62px, 7.5vw, 108px); font-weight: 600; line-height: .98; letter-spacing: -.065em; margin-left: -5px; }
-.hero h1 > span { display: block; font-size: .85em; color: var(--accent); margin-top: 13px; }
+.hero h1 .hero-line-accent { display: block; font-size: .85em; color: var(--accent); margin-top: 13px; }
 .hero-description { max-width: 475px; margin-top: 28px; font-size: 15px; line-height: 1.85; color: #d0dce5; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 30px; margin-top: 30px; }
 .hero .button { background: #fff; border-color: #fff; color: var(--ink); }
@@ -38,7 +39,6 @@
 .destination-flag svg { display: block; width: 24px; height: 24px; }
 .hero-facts p > .fact-icon { color: var(--accent-on-dark); font-size: 26px; }
 .motion-enabled .hero-kicker { animation: hero-enter .7s both; }
-.motion-enabled .hero h1 { animation: hero-enter .8s .1s both; }
 .motion-enabled .hero-description { animation: hero-enter .8s .2s both; }
 .motion-enabled .hero-actions { animation: hero-enter .8s .3s both; }
 @keyframes hero-enter { from { opacity: 0; translate: 0 20px; } to { opacity: 1; translate: 0 0; } }
@@ -58,7 +58,7 @@
   .hero-copy { width: 100%; max-width: 560px; }
   .hero-kicker { gap: 8px; font-size: 9px; margin-bottom: 26px; }
   .hero h1 { font-size: clamp(48px, 10.5vw, 76px); margin-left: -2px; }
-  .hero h1 > span { font-size: .84em; margin-top: 10px; }
+  .hero h1 .hero-line-accent { font-size: .84em; margin-top: 10px; }
   .hero-description { max-width: 500px; font-size: 14px; margin-top: 24px; }
   .hero-actions { gap: 28px; margin-top: 24px; }
   .hero-signature { margin-top: 24px; }

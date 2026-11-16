@@ -9,6 +9,7 @@ import WorkVisual from './components/WorkVisual';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import './content-sections.css';
 import './contact.css';
+import './motion.css';
 
 const navigation = [
   ['Selected work', 'work'],
