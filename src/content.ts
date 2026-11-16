@@ -43,7 +43,7 @@ export const profile: Profile = {
   portraitVideo: null,
   email: 'nazariy17@gmail.com',
   linkedin: 'https://de.linkedin.com/in/nazariybohun',
-  languages: 'German: intermediate (B1–B2, self-assessed) · English: professional working proficiency · Portuguese and Ukrainian: native',
+  languages: 'German: B2 · English: C1 · Portuguese and Ukrainian: native',
   introduction: 'Senior Software Engineer and former co-founder pursuing Technical Product Owner roles. I connect requirements, priorities and technical delivery, drawing on enterprise engineering and client-facing experience while developing my applied AI capabilities.',
   bio: [
     'I’m a Senior Software Engineer with 15+ years across enterprise, automotive, mobile and web software, including work in the Daimler / Mercedes-Benz environment since 2017. Technical Product Ownership is my primary career direction, backed by hands-on engineering and founder experience.',

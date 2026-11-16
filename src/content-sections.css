@@ -41,7 +41,7 @@
 .about.section {
   width: 100%;
   max-width: none;
-  padding-inline: clamp(24px, 6vw, 200px);
+  padding-inline: var(--content-gutter);
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: clamp(32px, 4.5vw, 72px);
   align-items: start;
@@ -133,3 +133,13 @@ html:root { --navigation-height: 84px; scroll-padding-top: calc(var(--navigation
 .site-header .brand { font-size: clamp(20px, 2.2vw, 27px); white-space: nowrap; }
 .about.section .card-caption { flex-direction: column; gap: 5px; }
 .about.section .profile-languages { border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* Shared content edges for Introduction and every other content section. */
+:root { --content-gutter: 8%; }
+.section.section { padding-inline: var(--content-gutter); }
+@media (min-width: 1600px) {
+  :root { --content-gutter: max(8%, calc((100vw - 1360px) / 2)); }
+}
+@media (max-width: 650px) {
+  :root { --content-gutter: 7%; }
+}
