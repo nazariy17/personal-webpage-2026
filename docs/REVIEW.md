@@ -8,6 +8,7 @@ Branch: `feat/swiss-portfolio-review`.
 2. `feat: foreground selected achievements and simplify portfolio navigation` — show four MBTI contributions, add readable career bullets, replace the animated introduction and improve project-dialog focus restoration.
 3. `style: introduce a restrained Swiss typography and grid system` — off-white canvas, dark typography, red accent, aligned responsive grids and a naturally framed portrait.
 4. `chore: document branch review and stop tracking generated build output` — update documentation and remove generated files from Git tracking, preserving local build output and the existing ignore rule.
+5. `design: restore an animated alpine cover with a modern Swiss identity` — replace the austere first design with a cinematic image cover, warm orange typography, portrait parallax, controllable motion, illustrated achievement cards and stronger light/dark section contrast.
 
 ## Run the review
 
@@ -28,7 +29,7 @@ Use the local preview URL printed by Vite. It serves this checkout's build. For 
 - Projects: accurate in-development labels, scope and next steps.
 - Phone and tablet layouts: readable text, reachable navigation and no horizontal overflow.
 
-## Validation performed on 16 November 2026
+## Initial revision validation — 16 November 2026
 
 - TypeScript typecheck passed after the content and page-structure tasks.
 - Production build passed with Vite; built output served and inspected locally.
@@ -41,3 +42,19 @@ Use the local preview URL printed by Vite. It serves this checkout's build. For 
 - The introduction and page content have no entrance or scroll animations; reduced-motion CSS disables smooth scrolling.
 
 These checks cover the local browser and common responsive widths. They do not constitute testing across every browser, device or assistive technology. No production deployment is included in this branch review.
+
+## Modern Swiss revision — 16 November 2026
+
+The latest design follows feedback requesting a more attractive modern Swiss page with animation and the earlier image-cover feel. The existing alpine scene and portrait are reused. Achievement illustrations are decorative diagrams, not screenshots of internal systems or finished personal projects.
+
+- TypeScript and the production build passed after the redesign.
+- Desktop cover, selected-work cards and dark capability section inspected in the production preview.
+- Layout checked at 320px, 390px, 768px and 1024px; document scroll width did not exceed client width.
+- Pause froze both scenery and orbit animations and made every reveal section visible. Resume restarted motion successfully.
+- The decorative portrait cannot intercept clicks; motion controls remain above the artwork.
+- In-page anchors remained valid. The AI project dialog opened, closed with Escape and returned focus to its trigger.
+- No warning/error logs observed in the final production-preview inspection.
+- Core action contrast: dark text on the hero's orange button 5.45:1; white text on the darker dialog-button accent 5.93:1. Decorative lighter colours are reserved for large headings or artwork.
+- Reduced-motion handling is implemented in both CSS and a media-query hook. The pause state disables smooth scrolling as well as animations and reveals. A full OS-preference/device matrix has not been tested.
+
+The earlier static-design descriptions and palette results above document the first four commits. The latest commit supersedes that visual direction while retaining the strengthened professional evidence.
