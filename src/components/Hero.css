@@ -10,8 +10,10 @@
 .hero h1 > span { display: block; font-size: .85em; color: var(--accent); margin-top: 13px; }
 .hero-description { max-width: 475px; margin-top: 28px; font-size: 15px; line-height: 1.85; color: #d0dce5; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 30px; margin-top: 30px; }
-.hero .button { background: var(--accent); border-color: var(--accent); color: #fff; }
-.hero .button:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+.hero .button { background: #fff; border-color: #fff; color: var(--ink); }
+.hero .button > span { color: var(--accent); transition: transform .25s; }
+.hero .button:hover > span { transform: translate(3px, -3px); }
+.hero .button:hover { background: #f0f3f5; border-color: #f0f3f5; }
 .hero-contact { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; font-size: 13px; padding: 8px 0; }
 .hero-contact span { font-size: 20px; color: var(--accent-on-dark); transition: transform .2s; }
 .hero-contact:hover span { transform: translate(3px,-3px); }
