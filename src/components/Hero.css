@@ -32,6 +32,8 @@
 .hero-facts p > span { font-size: 10px; color: #a7b9c8; line-height: 1.6; }
 .hero-facts p > span > strong { display: block; font-size: 13px; font-weight: 500; color: #e6edf2; margin-bottom: 4px; }
 .hero-facts p > span > span { display: block; font-size: 10px; }
+.destination-flag { display: inline-flex; justify-content: center; flex-shrink: 0; }
+.destination-flag svg { display: block; width: 24px; height: 24px; }
 .hero-facts p > .fact-icon { color: var(--accent-on-dark); font-size: 26px; }
 .motion-enabled .hero-kicker { animation: hero-enter .7s both; }
 .motion-enabled .hero h1 { animation: hero-enter .8s .1s both; }
