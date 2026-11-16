@@ -11,8 +11,8 @@ export default function Hero({ paused, reduced, onToggleMotion }: HeroProps) {
   return <section className="hero" id="home" aria-labelledby="hero-heading" onPointerMove={event => {
     if (paused || reduced || event.pointerType !== 'mouse') return;
     const bounds = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty('--scene-x', `${((event.clientX - bounds.left) / bounds.width - .5) * 20}px`);
-    event.currentTarget.style.setProperty('--scene-y', `${((event.clientY - bounds.top) / bounds.height - .5) * 12}px`);
+    event.currentTarget.style.setProperty('--scene-x', `${((event.clientX - bounds.left) / bounds.width - .5) * 26}px`);
+    event.currentTarget.style.setProperty('--scene-y', `${((event.clientY - bounds.top) / bounds.height - .5) * 15.6}px`);
   }} onPointerLeave={event => {
     event.currentTarget.style.setProperty('--scene-x', '0px');
     event.currentTarget.style.setProperty('--scene-y', '0px');
