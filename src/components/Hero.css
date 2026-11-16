@@ -147,3 +147,21 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* Keep the composition together on wide displays while scenery stays full bleed. */
+@media (min-width: 1800px) {
+  .hero-sequence .hero-pinned { --hero-inset: max(6%, calc((100% - 1600px) / 2)); }
+  .hero-sequence .hero-title,
+  .hero-sequence .scroll-cue { left: var(--hero-inset); }
+  .hero-sequence .hero-description,
+  .hero-sequence .hero-actions,
+  .hero-sequence .hero-index { right: var(--hero-inset); }
+  .hero-sequence .portrait-stage-with-photo {
+    left: calc(50% - 272px);
+    top: auto;
+    bottom: 0;
+    width: 640px;
+    height: min(86%, 860px);
+  }
+  .site-header { padding-inline: max(4.5%, calc((100% - 1600px) / 2)); }
+}
