@@ -3,8 +3,9 @@
   --paper: #f7f8fa;
   --ink: #14212c;
   --muted: #586571;
-  --accent: #e34727;
-  --accent-ink: #b7351b;
+  --accent: #e30613;
+  --accent-ink: #c6101b;
+  --accent-on-dark: #ff4b55;
   --line: #dce1e6;
   --surface: #fff;
   --navy: #0e1b26;
@@ -40,16 +41,14 @@ h3 { font-size: 25px; line-height: 1.18; letter-spacing: -.035em; }
 .site-header { position: sticky; top: 0; z-index: 30; background: #0e1b26f5; color: white; backdrop-filter: blur(18px); border-bottom: 1px solid #ffffff15; }
 .header-inner { max-width: calc(var(--content-width) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); min-height: 84px; display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 650; letter-spacing: -.04em; line-height: 1; white-space: nowrap; }
-.brand-mark { display: grid; place-content: center; position: relative; width: 42px; height: 42px; color: white; background: var(--accent); border-radius: 10px 10px 10px 2px; font-size: 27px; font-weight: 750; letter-spacing: -.12em; padding-right: 7px; }
-.brand-mark > span { position: absolute; right: 6px; bottom: 7px; color: #ffd1bd; }
-.brand-name { font-size: 17px; letter-spacing: -.025em; }
+.brand-name { font-size: 20px; letter-spacing: -.025em; }
 .brand-name small { display: block; font-size: 9px; color: #a8b7c4; letter-spacing: .08em; text-transform: uppercase; font-weight: 400; margin-top: 7px; }
 .site-header nav { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .site-header nav a { display: flex; align-items: center; min-height: 44px; font-size: 12px; padding: 8px 15px; color: #c9d2d9; border-radius: 30px; transition: background .2s, color .2s; }
 .site-header nav a:hover { background: #ffffff0f; color: white; }
 .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 52px; background: var(--accent-ink); border: 1px solid var(--accent-ink); color: #fff; border-radius: 8px; padding: 14px 22px; font-size: 14px; font-weight: 600; line-height: 1.4; transition: transform .25s, background .25s, box-shadow .25s; }
 .button > span { font-size: 20px; font-weight: 400; }
-.button:hover { background: #c9371b; border-color: #c9371b; transform: translateY(-3px); box-shadow: 0 8px 24px #e3472724; }
+.button:hover { background: var(--accent-ink); border-color: var(--accent-ink); transform: translateY(-3px); box-shadow: 0 8px 24px #e3061324; }
 .text-link { display: inline-flex; align-items: center; gap: 20px; min-height: 44px; padding: 8px 0; border: 0; background: none; font-size: 13px; font-weight: 600; line-height: 1.4; }
 .text-link > span { display: grid; place-content: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); transition: background .2s, color .2s, transform .2s; }
 .text-link:hover { color: var(--accent-ink); }
@@ -74,7 +73,7 @@ dialog .button { margin-top: 32px; }
 .motion-enabled [data-reveal]:focus-within { opacity: 1; translate: 0 0; }
 .motion-paused *, .motion-paused *::before, .motion-paused *::after { animation-play-state: paused !important; transition: none !important; }
 .motion-paused [data-reveal] { opacity: 1; translate: 0 0; }
-.motion-paused .hero-portrait, .motion-paused .hero-scenery { transform: none !important; }
+.motion-paused .hero-scenery { transform: none !important; }
 html:has(.motion-paused) { scroll-behavior: auto; }
 @media (max-width: 900px) {
   .header-inner { gap: 14px; }
@@ -85,7 +84,6 @@ html:has(.motion-paused) { scroll-behavior: auto; }
 @media (max-width: 760px) {
   html { scroll-padding-top: 130px; }
   .header-inner { min-height: 112px; flex-wrap: wrap; justify-content: space-between; gap: 0; padding-top: 14px; padding-bottom: 6px; }
-  .brand-mark { width: 36px; height: 36px; font-size: 24px; }
   .site-header nav { order: 3; width: 100%; justify-content: space-between; gap: 0; margin: 8px 0 0; }
   .site-header nav a { font-size: 11px; padding-inline: 8px; }
   .section { padding-block: 64px; }
@@ -98,5 +96,5 @@ html:has(.motion-paused) { scroll-behavior: auto; }
   html { scroll-behavior: auto !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   [data-reveal] { opacity: 1 !important; translate: 0 0 !important; }
-  .hero-portrait, .hero-scenery { transform: none !important; }
+  .hero-scenery { transform: none !important; }
 }

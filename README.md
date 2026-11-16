@@ -31,7 +31,7 @@ Open the preview address printed in the terminal. Preview serves the production 
 | --- | --- |
 | `src/content.ts` | Profile, selected achievements, employment, capabilities and project status |
 | `src/App.tsx` | Page sections, navigation and selected-project state |
-| `src/components/Hero.tsx` | Alpine image cover, portrait, pointer response and motion control |
+| `src/components/Hero.tsx` | Original mountain cover, stationary portrait and motion control |
 | `src/components/WorkVisual.tsx` | Decorative diagrams for the achievement cards |
 | `src/hooks/useReducedMotion.ts` | System motion preference, including live preference changes |
 | `src/components/ProjectDialog.tsx` | Native modal with scope, next steps and focus restoration |
@@ -43,7 +43,7 @@ Open the preview address printed in the terminal. Preview serves the production 
 | `index.html` | Page title, social metadata and Person structured data |
 | `public/images/` | Existing portrait and image assets |
 
-The modern Swiss visual system combines a cinematic alpine image cover, bold typography, a warm orange accent, illustrated achievement cards and consistent grid alignment. The background drifts slowly, orbit details animate and the portrait responds subtly to a mouse pointer. The hero's Pause animation control pauses motion across the page. Content sections reveal as they enter the viewport; pausing exposes all sections immediately. System reduced-motion preferences disable animation, pointer movement, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
+The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The original mountain background drifts slowly while the portrait remains stationary and unobscured, without orbit graphics, a glass caption or pointer transforms. The hero's Pause animation control pauses motion across the page. Content sections reveal as they enter the viewport; pausing exposes all sections immediately. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
 
 The AI Engineering Agent and Planes Over Me are personal projects **in development**. Their descriptions distinguish current scope from planned exploration. The internal AI prototype case study describes frontend delivery, not ownership of its model or backend.
 

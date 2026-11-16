@@ -58,3 +58,9 @@ The latest design follows feedback requesting a more attractive modern Swiss pag
 - Reduced-motion handling is implemented in both CSS and a media-query hook. The pause state disables smooth scrolling as well as animations and reveals. A full OS-preference/device matrix has not been tested.
 
 The earlier static-design descriptions and palette results above document the first four commits. The latest commit supersedes that visual direction while retaining the strengthened professional evidence.
+
+## Swiss-red and portrait refinement — 16 November 2026
+
+The latest refinement restores the original `hero-alpine-airplane.png` mountain background, replaces orange accents with Swiss red (`#e30613`), and removes the N. monogram from the header and favicon. The portrait is stationary, with no transform/filter, orbit graphics or glass caption; its fade is confined to the bottom edge. Background motion, section reveals and pause/resume remain available.
+
+Validation: TypeScript and production build passed. The production preview confirmed the correct mountain asset, a loaded portrait with computed transform/filter both `none`, no header monogram, working pause/resume and no document overflow at 320px, 390px, 768px and 1024px. No browser warning/error logs observed. White text on the main red button has 4.88:1 contrast; the lighter red used for small accents on dark surfaces has 5.31:1 contrast against the base navy. These changes supersede the prior orange/portrait-parallax design notes.

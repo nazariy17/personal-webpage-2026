@@ -19,7 +19,7 @@ const navigation = [
 
 function Navigation() {
   return <header className="site-header"><div className="header-inner">
-    <a className="brand" href="#home" aria-label="Nazariy Bohun — home"><span className="brand-mark" aria-hidden="true">N<span>.</span></span><span className="brand-name">Nazariy Bohun<small>Engineering & solutions</small></span></a>
+    <a className="brand" href="#home" aria-label="Nazariy Bohun — home"><span className="brand-name">Nazariy Bohun<small>Engineering & solutions</small></span></a>
     <nav aria-label="Main navigation">{navigation.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
     <ContactAction kind="linkedin" className="navigation-linkedin" iconOnly />
   </div></header>;
