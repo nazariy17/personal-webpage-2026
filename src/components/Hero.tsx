@@ -1,5 +1,6 @@
 import { profile } from '../content';
 import './Hero.css';
+import MountainScene from './MountainScene';
 
 interface HeroProps {
   paused: boolean;
@@ -17,7 +18,7 @@ export default function Hero({ paused, reduced, onToggleMotion }: HeroProps) {
     event.currentTarget.style.setProperty('--scene-x', '0px');
     event.currentTarget.style.setProperty('--scene-y', '0px');
   }}>
-    <div className="hero-scenery-wrap" aria-hidden="true"><div className="hero-scenery" /></div>
+    <div className="hero-scenery-wrap" aria-hidden="true"><div className="hero-scenery"><MountainScene /></div></div>
     <div className="hero-inner">
       <div className="hero-copy">
         <p className="hero-kicker"><span className="signal-dot" />Nazariy Bohun <span className="kicker-divider">/</span> Senior Software Engineer</p>

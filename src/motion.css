@@ -33,3 +33,23 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-scenery-wrap { transform: none !important; }
 }
+
+.alpine-landscape { display: block; width: 100%; height: 100%; overflow: hidden; }
+.flight-plane { transform: translate(1500px, 105px); transform-origin: 0 0; opacity: .65; animation: alpine-flight 5s linear infinite; }
+.flight-trail { stroke: #b5c0cb; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: .25; animation: alpine-contrail 5s linear infinite; }
+
+/* Four seconds in flight, then a soft fade and invisible reset every five seconds. */
+@keyframes alpine-flight {
+  0% { transform: translate(1045px, 235px); opacity: 0; }
+  6% { opacity: .65; }
+  80% { transform: translate(1500px, 105px); opacity: .65; }
+  90% { transform: translate(1500px, 105px); opacity: 0; }
+  100% { transform: translate(1045px, 235px); opacity: 0; }
+}
+@keyframes alpine-contrail {
+  0% { stroke-dashoffset: 1; opacity: 0; }
+  6% { opacity: .25; }
+  80% { stroke-dashoffset: 0; opacity: .25; }
+  95% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 1; opacity: 0; }
+}
