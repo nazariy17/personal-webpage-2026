@@ -82,13 +82,12 @@ function Personal() {
 
 export default function App() {
   const [project, setProject] = useState<Project | null>(null);
-  const [paused, setPaused] = useState(false);
   const reduced = useReducedMotion();
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const elements = root.current?.querySelectorAll<HTMLElement>('[data-reveal]');
     if (!elements) return;
-    if (reduced || paused || !('IntersectionObserver' in window)) {
+    if (reduced || !('IntersectionObserver' in window)) {
       elements.forEach(element => { element.dataset.visible = 'true'; });
       return;
     }
@@ -100,10 +99,10 @@ export default function App() {
     }), { threshold: .08 });
     elements.forEach(element => observer.observe(element));
     return () => observer.disconnect();
-  }, [paused, reduced]);
-  return <div ref={root} className={`portfolio ${paused || reduced ? 'motion-paused' : 'motion-enabled'}`}><a className="skip" href="#main-content">Skip to content</a><Navigation />
-    <main id="main-content" tabIndex={-1}><Hero paused={paused} reduced={reduced} onToggleMotion={() => setPaused(value => !value)} /><SelectedWork /><Experience /><AboutAndSkills /><Projects onSelect={setProject} /><Personal /><Contact /></main>
-    <footer className="site-footer"><div><a className="brand" href="#home">{profile.name}<span aria-hidden="true">.</span></a><p>Software. Solutions. Delivery.</p></div><p>© {new Date().getFullYear()} {profile.name}</p><a className="text-link" href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
+  }, [reduced]);
+  return <div ref={root} className={`portfolio ${reduced ? 'motion-paused' : 'motion-enabled'}`}><a className="skip" href="#main-content">Skip to content</a><Navigation />
+    <main id="main-content" tabIndex={-1}><Hero reduced={reduced} /><SelectedWork /><Experience /><AboutAndSkills /><Projects onSelect={setProject} /><Personal /><Contact /></main>
+    <footer className="site-footer"><div><a className="brand" href="#home">{profile.name}<span aria-hidden="true">.</span></a></div><p>© {new Date().getFullYear()} {profile.name}</p><a className="text-link" href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
     <ProjectDialog project={project} onClose={() => setProject(null)} />
   </div>;
 }

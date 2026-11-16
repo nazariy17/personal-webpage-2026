@@ -18,15 +18,8 @@
 .hero-contact { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; font-size: 13px; padding: 8px 0; }
 .hero-contact span { font-size: 20px; color: var(--accent-on-dark); transition: transform .2s; }
 .hero-contact:hover span { transform: translate(3px,-3px); }
-.hero-signature { display: flex; align-items: center; gap: 12px; margin-top: 35px; font-size: 10px; color: #9eafbd; letter-spacing: .04em; }
-.signature-line { width: 28px; height: 1px; background: var(--accent-on-dark); }
 .hero-portrait { position: absolute; z-index: 1; right: var(--gutter); bottom: 0; height: 94%; width: 44%; pointer-events: none; }
 .hero-portrait img { position: absolute; bottom: 0; left: 20%; width: 60%; height: 60%; object-fit: contain; object-position: center bottom; mask-image: linear-gradient(#000 92%, transparent 100%); }
-.hero-scroll { position: absolute; z-index: 4; bottom: 26px; left: var(--gutter); display: flex; gap: 12px; align-items: center; font-size: 10px; color: #b9c7d1; }
-.hero-scroll > span { display: grid; place-content: center; width: 29px; height: 29px; border: 1px solid #ffffff26; border-radius: 50%; font-size: 16px; }
-.motion-control { position: absolute; z-index: 4; bottom: 26px; right: var(--gutter); display: flex; align-items: center; gap: 10px; min-height: 44px; background: #0e1b2666; border: 1px solid #ffffff26; border-radius: 30px; padding: 6px 12px; color: #d0dce5; font-size: 10px; }
-.motion-control:hover { background: #ffffff12; }
-.motion-control:disabled { cursor: default; }
 .hero-facts { position: relative; z-index: 3; border-top: 1px solid #ffffff18; background: #0e1b26de; }
 .hero-facts-inner { max-width: calc(var(--content-width) + var(--gutter) * 2); margin-inline: auto; padding: 28px var(--gutter); display: grid; grid-template-columns: .8fr 1.2fr 1.2fr; gap: 32px; }
 .hero-facts p { display: flex; align-items: center; gap: 18px; }
@@ -61,12 +54,9 @@
   .hero h1 .hero-line-accent { font-size: .84em; margin-top: 10px; }
   .hero-description { max-width: 500px; font-size: 14px; margin-top: 24px; }
   .hero-actions { gap: 28px; margin-top: 24px; }
-  .hero-signature { margin-top: 24px; }
   .hero::before { background: linear-gradient(180deg,#091724c9 0%,#09172470 55%,#0e1b26 100%); }
   .hero-portrait { height: 370px; width: 100%; max-width: 500px; right: 0; bottom: 0; }
   .hero-portrait img { object-position: center bottom; }
-  .hero-scroll { z-index: 4; bottom: 17px; font-size: 9px; }
-  .motion-control { z-index: 4; bottom: 17px; font-size: 8px; gap: 6px; padding-inline: 9px; }
   .hero-facts-inner { grid-template-columns: 1fr; padding-block: 22px; gap: 20px; }
   .hero-facts p:not(:first-child) { border-top: 1px solid #ffffff12; padding-top: 16px; }
   .hero-facts p > strong { font-size: 38px; }

@@ -31,7 +31,7 @@ Open the preview address printed in the terminal. Preview serves the production 
 | --- | --- |
 | `src/content.ts` | Profile, selected achievements, employment, capabilities and project status |
 | `src/App.tsx` | Page sections, navigation and selected-project state |
-| `src/components/Hero.tsx` | Original mountain cover, stationary portrait and motion control |
+| `src/components/Hero.tsx` | Mountain cover, stationary portrait and mouse parallax |
 | `src/components/MountainScene.tsx` | Responsive mountain artwork and five-second airplane/contrail cycle |
 | `src/components/WorkVisual.tsx` | Decorative diagrams for the achievement cards |
 | `src/hooks/useReducedMotion.ts` | System motion preference, including live preference changes |
@@ -45,7 +45,7 @@ Open the preview address printed in the terminal. Preview serves the production 
 | `index.html` | Page title, social metadata and Person structured data |
 | `public/images/` | Existing portrait and image assets |
 
-The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The mountain scene drifts slowly and responds subtly to a mouse pointer, with 30% more parallax travel than the earlier revision. An airplane follows the original diagonal path every five seconds, with a growing contrail and a soft reset. A clean background plate avoids leaving a second static airplane behind; the original source asset remains unchanged. The smaller portrait stays stationary and anchored to the cover bottom, without orbit graphics, a glass caption or portrait transforms. The headline reveals line by line, and achievement diagrams animate as their cards enter view. The hero's Pause animation control pauses motion across the page. Content sections reveal as they enter the viewport; pausing exposes all sections immediately. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
+The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The mountain scene drifts slowly and responds subtly to a mouse pointer, with 30% more parallax travel than the earlier revision. An airplane follows the original diagonal path every five seconds, with a growing contrail and a soft reset. A clean background plate avoids leaving a second static airplane behind; the original source asset remains unchanged. The smaller portrait stays stationary and anchored to the cover bottom, without orbit graphics, a glass caption or portrait transforms. The headline reveals line by line, and achievement diagrams animate as their cards enter view. Content sections reveal as they enter the viewport. The hero omits the slogan, scroll prompt and manual animation control. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
 
 The AI Engineering Agent and Planes Over Me are personal projects **in development**. Their descriptions distinguish current scope from planned exploration. The internal AI prototype case study describes frontend delivery, not ownership of its model or backend.
 
