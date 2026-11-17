@@ -15,7 +15,7 @@ export default function ContactAction({ kind, className = '', iconOnly = false }
 }) {
   const value = profile[kind];
   const label = kind === 'email' ? 'Email me' : 'LinkedIn';
-  const accessibleLabel = kind === 'email' ? 'Email Nazar Bohun' : 'Nazar Bohun on LinkedIn (opens in a new tab)';
+  const accessibleLabel = kind === 'email' ? 'Email ' + profile.name : profile.name + ' on LinkedIn (opens in a new tab)';
   const content = <><ContactIcon kind={kind} />{!iconOnly && <><span>{label}</span><span aria-hidden="true">↗</span></>}</>;
   const classes = 'contact-action ' + className;
   if (!value) return <span className={classes} role="link" aria-disabled="true"

@@ -23,7 +23,7 @@ Use the local preview URL printed by Vite. It serves this checkout's build. For 
 ## What to inspect
 
 - First screen: current senior engineering value, stable headline and clear contact action.
-- Selected work: delivery migration, Pinia migration and regression coverage, developer enablement and the AI prototype frontend.
+- Selected work: Pinia migration and regression coverage, Softrino client discovery and MVP scoping, developer enablement, and the AI prototype frontend. The GitHub migration remains supporting experience evidence.
 - Experience: formal titles and chronology, personal contributions and shared team responsibility.
 - Capabilities: engineering depth, practical AI-assisted work and languages.
 - Projects: accurate in-development labels, scope and next steps.
@@ -88,3 +88,6 @@ Validation: production build and TypeScript passed. Browser inspection confirmed
 Removed Software. Solutions. Delivery. from the hero and footer, removed Scroll to discover and the manual Pause animation button, and deleted the unused manual pause state and hero styles. System reduced-motion preferences continue to control animation automatically. The latest mouse coefficients are 33.8/20.28, another 30% above 26/15.6; the airplane remains on its five-second cycle.
 
 Validation: TypeScript and production build passed. Browser inspection confirmed the three unwanted strings are absent, zero manual controls, active flight, stronger pointer response, zero portrait-to-cover gap and no document overflow. No browser warning/error logs observed. Earlier manual-pause notes document previous revisions; the manual control is intentionally absent from the current design.
+## Master-record copy review — 17 November 2026
+
+Professional positioning, achievements, chronology, capabilities, contact copy and search metadata now reflect the updated master career record. See [COPY_REVIEW.md](COPY_REVIEW.md) for the exact source revision, factual boundaries and validation. The founder achievement illustration now identifies Softrino correctly; illustration variants are independent of card order.

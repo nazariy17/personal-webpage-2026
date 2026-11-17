@@ -21,6 +21,8 @@ export interface Experience {
 export interface Achievement {
   title: string;
   context: string;
+  organisation: 'Mercedes-Benz Tech Innovation' | 'Softrino';
+  visual: 'architecture' | 'solutions' | 'enablement' | 'ai';
   scope: string;
   description: string;
   outcome: string;
@@ -44,55 +46,63 @@ export interface Project {
   status: 'In development';
 }
 
-// Public summaries grounded in the November 2026 career review.
-// Keep formal titles, individual contributions and shared responsibility distinct.
+// Reconciled with the master career record updated 17 November 2026.
+// See docs/COPY_REVIEW.md for the source revision and wording decisions.
 export const profile: Profile = {
   name: 'Nazariy Bohun',
-  role: 'Senior Software Engineer · Technical Solutions & Delivery',
+  role: 'Senior Software Engineer · Technical Product & Solution Ownership · Former Co-Founder',
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: 'nazariy17@gmail.com',
   linkedin: 'https://www.linkedin.com/in/nazariybohun/',
   languages: 'German: B2 — daily working language · English: C1 · Portuguese and Ukrainian: native',
-  introduction: 'Senior Software Engineer and former software-company co-founder with 15+ years of experience. I turn requirements into technical solutions, combining hands-on engineering, shared prioritisation and responsibility for delivery.',
+  introduction: 'Senior Software Engineer and former Softrino co-founder with 15+ years of experience. I combine hands-on engineering, technical product and solution responsibilities, and direct client delivery to turn business problems into working software.',
   bio: [
-    'At Mercedes-Benz Tech Innovation, my work connects requirements, technical decisions and delivery. I shape stories in refinement and PI planning, share sprint and defect prioritisation with Product Owners, and maintain the technical backlog with the engineering team.',
-    'My engineering experience spans enterprise applications, automotive software, mobile products and web platforms. In my current team, I work across the Angular frontend and Kotlin / Spring Boot backend-for-frontend, from implementation and testing to releases and production diagnosis.',
-    'Earlier, I co-founded Softrino in Lisbon, working directly with clients on scope, estimates and priorities. Today I also design and use AI-assisted development workflows, while staying responsible for the resulting code, tests and technical decisions.',
+    'At Mercedes-Benz Tech Innovation, I connect requirements, technical decisions and delivery. My current work spans an Angular frontend and Kotlin / Spring Boot backend-for-frontend, from implementation and testing to releases, deployment configuration and production diagnosis.',
+    'In SAFe teams, I contribute technical feasibility, estimates, dependencies and risks to refinement and PI Planning. I prioritise technical debt with the engineering team and agree defect priorities with the Product Owner, helping turn product needs into realistic delivery plans.',
+    'As a Softrino co-founder, I led client discovery, defined functional solutions and proposed the scope of initial MVPs and later releases. I agreed priorities and delivery trade-offs directly with clients, recruited and guided developers, and coordinated delivery through testing, release and support.',
   ],
 };
 
 export const achievements: Achievement[] = [
   {
-    title: 'Keeping software delivery moving',
-    context: 'Mercedes-Benz Tech Innovation · Delivery migration',
-    scope: '2 repositories · 2 services · ~15 workflows',
-    description: 'Completed a deadline-driven GitHub migration covering build, release and deployment workflows. Reconfigured integrations and resolved configuration and database-connectivity issues.',
-    outcome: 'Completed within the required deadline, with deployment working again.',
-    tags: ['GitHub Actions', 'CI/CD', 'Deployment'],
-  },
-  {
     title: 'Making application state understandable',
-    context: 'Mercedes-Benz Tech Innovation · Frontend architecture',
+    context: 'Mercedes-Benz Tech Innovation · Technical judgement',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'architecture',
     scope: 'Vue · Pinia · Playwright',
-    description: 'Proposed replacing an inherited Redux implementation with Pinia, explained the technical case and implemented the change after team agreement. Added automated coverage for key workflows and regressions.',
+    description: 'Proposed replacing an inherited Redux implementation with Pinia, explained the technical case and implemented the change after team agreement. Refactored the frontend and added Playwright coverage for key workflows and regressions.',
     outcome: 'Clearer state flow, more readable code and corrected data handling.',
     tags: ['Architecture', 'Vue', 'Regression testing'],
   },
   {
+    title: 'From a client problem to a release plan',
+    context: 'Softrino · Client discovery & solution delivery',
+    organisation: 'Softrino',
+    visual: 'solutions',
+    scope: 'Co-founder · Active role 2011–2017',
+    description: 'Led discovery with clients, translated business needs into functional solutions and proposed what to deliver in an initial MVP and subsequent releases. Sequenced work around client priorities, technical dependencies, budget and available capacity.',
+    outcome: 'Scoped release plans and delivery trade-offs agreed directly with clients, followed through to implementation, release and support.',
+    tags: ['Client discovery', 'MVP scoping', 'Release sequencing'],
+  },
+  {
     title: 'Building foundations other teams can use',
     context: 'Mercedes-Benz Tech Innovation · Developer enablement',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'enablement',
     scope: 'Reusable tooling across assignments',
-    description: 'Contributed a Vue 3 migration template and starter standard. Across several assignments, built reusable GitHub Actions, shared documentation and onboarding/offboarding automation spanning GitHub and collaboration tools.',
-    outcome: 'Reusable foundations for project setup, access and everyday delivery.',
+    description: 'Helped create a Vue 3 migration template and starter standard after working in an early migration team. Across assignments, contributed reusable GitHub Actions, shared documentation and onboarding/offboarding automation across GitHub and collaboration tools.',
+    outcome: 'Reusable foundations for project setup, access and everyday delivery, adopted beyond the original team.',
     tags: ['Developer experience', 'Automation', 'Standards'],
   },
   {
     title: 'Giving an AI prototype its interface',
     context: 'Mercedes-Benz Tech Innovation · AI-enabled product',
-    scope: 'Sole frontend developer · 2-month assignment',
-    description: 'Built the React conversational frontend of an internal AI-enabled component-comparison prototype, collaborating with the Python / LLM backend team.',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'ai',
+    scope: 'Sole frontend developer · About 2 months',
+    description: 'Developed the React conversational frontend of an internal AI-enabled component-comparison prototype, collaborating with the Python / LLM backend team.',
     outcome: 'Delivered the conversational interface for a prototype with real users.',
     tags: ['React', 'Conversational UI', 'AI prototype'],
   },
@@ -104,9 +114,10 @@ export const experience: Experience[] = [
     area: 'Senior Software Engineer · Dec 2018–present',
     description: 'Software delivery across vehicle-order management, automotive software-update workflows and an internal AI prototype. Direct employment began at Daimler TSS, continuing the private car-sharing assignment started through Questax.',
     highlights: [
-      'Translate requirements into technical scope and stories; contribute to PI planning and shared sprint prioritisation.',
-      'Share delivery and operational responsibility within the current frontend / backend-for-frontend team, including implementation, reviews, testing, deployment and production diagnosis.',
-      'Propose and implement architecture improvements, contribute reusable developer tooling, and facilitate retrospectives, workshops and technical decisions.',
+      'Shape technical scope and assess feasibility, dependencies and risks in SAFe refinement and PI Planning; prioritise technical debt with engineers and defects jointly with the Product Owner.',
+      'Share delivery and operational responsibility within the current frontend / backend-for-frontend team, including implementation, review, testing, deployment and production diagnosis. Experience includes on-call duty across assignments.',
+      'Completed a deadline-driven GitHub migration of two repositories, two services and approximately 15 workflows, resolving configuration and connectivity issues until deployment worked again.',
+      'Propose and implement technical improvements and reusable developer tooling. Facilitate retrospectives, workshops and technical decisions; co-facilitate planning and refinement.',
     ],
   },
   {
@@ -120,35 +131,44 @@ export const experience: Experience[] = [
   },
   {
     company: 'Softrino',
-    area: 'Co-Founder · Technical & Delivery Lead · Nov 2011–Aug 2017',
-    description: 'Co-founded a software company in Lisbon and coordinated mobile and web delivery for international clients, from discovery and implementation through release and support.',
+    area: 'Co-Founder · Nov 2011–Aug 2017',
+    description: 'Co-founded a software company in Lisbon and led technical discovery and delivery for international mobile and web clients. Shaped solutions, MVP scope and release sequencing around business needs and technical dependencies.',
     highlights: [
-      'Translated client needs into scope and estimates, and agreed priorities when requests exceeded available capacity.',
-      'Recruited and mentored developers within a five-person core team, with approximately ten contributors involved at peak.',
-      'Delivered web applications and integrations using technologies including PHP / Laravel and Node.js / Express, alongside mobile products.',
+      'Led requirements analysis and architecture, prepared estimates and agreed scope, priorities and capacity trade-offs directly with clients.',
+      'Proposed initial MVP releases and follow-up scope, explaining what each milestone would deliver within the agreed budget and timeline.',
+      'Handled recruitment and guided developers within a five-person core team, with approximately ten contributors involved at peak.',
+      'Built and supported partner lead-submission APIs; worked on SEPA direct-debit scheduling, bank API integration and duplicate-charge prevention.',
+    ],
+  },
+  {
+    company: 'Independent work · Portugal',
+    area: 'Independent Software Developer · Approx. 2006–2011',
+    description: 'Backend and frontend client work as a sole proprietor, before co-founding Softrino.',
+    highlights: [
+      'As the sole software engineer, developed a management-system backend from scratch for inventory workflows connected with scanning equipment and barcode-enabled staff stations.',
     ],
   },
 ];
 
 export const skills: SkillGroup[] = [
   {
-    title: 'Technical solutions & delivery',
-    description: 'Turning business needs into executable work, with engineering judgement throughout planning and delivery.',
-    items: ['Requirements & refinement', 'Technical-backlog prioritisation', 'Shared sprint planning', 'PI planning', 'Stakeholder collaboration', 'Workshop facilitation'],
+    title: 'Product, solutions & client delivery',
+    description: 'Technical product and solution responsibilities grounded in engineering, plus direct client discovery and delivery as a co-founder.',
+    items: ['Requirements & solution definition', 'SAFe / PI Planning', 'Feasibility, dependencies & risks', 'Technical-debt prioritisation', 'Joint defect prioritisation', 'MVP scope & release sequencing', 'Client discovery & trade-offs'],
   },
   {
     title: 'Full-stack engineering',
-    description: 'Kotlin / Java services and TypeScript frontends, backed by experience across enterprise, web and mobile products.',
-    items: ['Kotlin / Java', 'Spring Boot', 'Angular / TypeScript', 'Vue / Pinia', 'React', 'PostgreSQL', 'REST APIs', 'Earlier: native iOS, PHP / Laravel, Node.js / Express'],
+    description: 'Kotlin / Java services and TypeScript frontends, with experience in application search, integrations, web and mobile products.',
+    items: ['Kotlin / Java', 'Spring Boot', 'Angular / TypeScript', 'Vue / Pinia', 'React', 'PostgreSQL', 'REST APIs', 'Elasticsearch / application search', 'Earlier: native iOS, PHP / Laravel, Node.js / Express'],
   },
   {
     title: 'Quality, operations & enablement',
-    description: 'Testing, release workflows, production investigation and tools that make delivery easier for other developers.',
-    items: ['GitHub Actions', 'Playwright', 'Docker / Kubernetes', 'Pact', 'SonarQube / Black Duck', 'Grafana / Kibana', 'Production support', 'Reusable developer tooling'],
+    description: 'Testing, release workflows, production support and reusable tools that help engineering teams deliver.',
+    items: ['GitHub Actions', 'Playwright', 'Docker / Kubernetes / K9s', 'AWS deployment configuration', 'Pact', 'SonarQube / Black Duck', 'Grafana / Kibana', 'On-call & production support', 'Reusable developer tooling'],
   },
   {
     title: 'AI-assisted engineering',
-    description: 'Practical use and configuration of agentic workflows, with code review, testing and engineering decisions kept in human hands.',
+    description: 'Configure and use agent-assisted workflows for exploration, scoped implementation and review, while retaining responsibility for design, correctness and testing.',
     items: ['GitHub Copilot / Devin', 'Parallel agent workflows', 'Implementation / test / review coordination', 'n8n automation', 'AI product frontend'],
   },
 ];

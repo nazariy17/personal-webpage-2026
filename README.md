@@ -1,6 +1,6 @@
 # Nazariy Bohun · Personal website
 
-A React, TypeScript and Vite portfolio focused on senior software engineering, technical solutions and delivery. The page presents selected contributions at Mercedes-Benz Tech Innovation, career history, capabilities, personal projects and contact details.
+A React, TypeScript and Vite portfolio focused on senior software engineering, technical solutions and delivery. The page presents selected contributions at Mercedes-Benz Tech Innovation and Softrino, career history, capabilities, personal projects and contact details.
 
 ## Local development
 
@@ -55,3 +55,5 @@ The current redesign is developed on `feat/swiss-portfolio-review`. See [the rev
 
 
 Image-generation prompts and saved scene assets are documented in [the asset notes](docs/IMAGE_ASSETS.md).
+
+The latest professional copy is reconciled against the master career record dated 17 November 2026. See [the copy review](docs/COPY_REVIEW.md) for source provenance, wording decisions and evidence boundaries.

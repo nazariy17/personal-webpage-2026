@@ -28,9 +28,9 @@ function Navigation() {
 
 function SelectedWork() {
   return <section className="section selected-work" id="work" aria-labelledby="work-heading">
-    <div className="section-heading" data-reveal><p className="eyebrow">01 / Selected work</p><h2 id="work-heading">Ownership,<br /><span>in practice.</span></h2><p>Real engineering challenges. Decisions I shaped. Software I helped move forward at Mercedes-Benz Tech Innovation.</p></div>
+    <div className="section-heading" data-reveal><p className="eyebrow">01 / Selected work</p><h2 id="work-heading">Ownership,<br /><span>in practice.</span></h2><p>Engineering decisions, client solutions and delivery responsibilities across Mercedes-Benz Tech Innovation and Softrino.</p></div>
     <div className="achievement-grid">{achievements.map((item, index) => <article className="achievement" key={item.title} data-reveal>
-      <WorkVisual index={index} />
+      <WorkVisual index={index} variant={item.visual} organisation={item.organisation} />
       <div className="achievement-copy">
       <div className="achievement-top"><span className="item-number">0{index + 1}</span><p>{item.context}</p></div>
       <h3>{item.title}</h3><p className="achievement-scope">{item.scope}</p><p>{item.description}</p>
@@ -54,7 +54,7 @@ function Experience() {
 function AboutAndSkills() {
   return <section className="section capabilities" id="skills" aria-labelledby="skills-heading">
     <div className="section-heading" data-reveal><p className="eyebrow">03 / Capabilities</p><h2 id="skills-heading">The bigger picture.<br /><span>The working detail.</span></h2></div>
-    <div className="about-grid"><p className="about-statement">Understand the problem.<br />Define the approach.<br />See it through.</p><div className="about-copy">{profile.bio.map(text => <p key={text}>{text}</p>)}<p className="profile-languages"><strong>Languages</strong>{profile.languages}</p></div></div>
+    <div className="about-grid"><p className="about-statement">Engineering depth.<br />Product judgement.<br />Founder experience.</p><div className="about-copy">{profile.bio.map(text => <p key={text}>{text}</p>)}<p className="profile-languages"><strong>Languages</strong>{profile.languages}</p></div></div>
     <div className="skill-groups">{skills.map((group, index) => <article className="skill-group" key={group.title} data-reveal><span className="skill-symbol" aria-hidden="true">{['↗', '⌘', '⊞', '✳'][index]}</span><h3>{group.title}</h3><p>{group.description}</p><ul className="skill-list">{group.items.map(item => <li key={item}>{item}</li>)}</ul></article>)}</div>
   </section>;
 }
