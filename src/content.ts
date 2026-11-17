@@ -15,6 +15,18 @@ export interface Experience {
   company: string;
   area: string;
   description: string;
+  highlights: string[];
+}
+
+export interface Achievement {
+  title: string;
+  context: string;
+  organisation: 'Mercedes-Benz Tech Innovation' | 'Softrino';
+  visual: 'architecture' | 'solutions' | 'enablement' | 'ai';
+  scope: string;
+  description: string;
+  outcome: string;
+  tags: string[];
 }
 
 export interface SkillGroup {
@@ -29,72 +41,135 @@ export interface Project {
   category: string;
   summary: string;
   description: string;
+  nextSteps: string;
   tags: string[];
   status: 'In development';
 }
 
-// Career positioning aligned with the September 2026 LinkedIn profile review.
-// Add portrait assets to public/ and set portraitImage or portraitVideo below.
+// Reconciled with the master career record updated 17 November 2026.
+// See docs/COPY_REVIEW.md for the source revision and wording decisions.
 export const profile: Profile = {
   name: 'Nazariy Bohun',
-  role: 'Technical Product Ownership · Software Engineering · Applied AI',
+  role: 'Senior Software Engineer · Technical Product & Solution Ownership · Former Co-Founder',
   portraitImage: '/images/nazar-portrait-transparent.png',
   aboutImage: '/images/nazar-portrait.jpg',
   portraitVideo: null,
   email: 'nazariy17@gmail.com',
-  linkedin: 'https://de.linkedin.com/in/nazariybohun',
-  languages: 'German: B2 · English: C1 · Portuguese and Ukrainian: native',
-  introduction: 'Senior Software Engineer and former co-founder pursuing Technical Product Owner roles. I connect requirements, priorities and technical delivery, drawing on enterprise engineering and client-facing experience while developing my applied AI capabilities.',
+  linkedin: 'https://www.linkedin.com/in/nazariybohun/',
+  languages: 'German: B2 — daily working language · English: C1 · Portuguese and Ukrainian: native',
+  introduction: 'Senior Software Engineer and former Softrino co-founder with 15+ years of experience. I combine hands-on engineering, technical product and solution responsibilities, and direct client delivery to turn business problems into working software.',
   bio: [
-    'I’m a Senior Software Engineer with 15+ years across enterprise, automotive, mobile and web software, including work in the Daimler / Mercedes-Benz environment since 2017. Technical Product Ownership is my primary career direction, backed by hands-on engineering and founder experience.',
-    'At Mercedes-Benz Tech Innovation, I work with Product Owners to clarify requirements, write and refine user and technical stories, and support backlog prioritization. On a vehicle-order-management platform, I help modernize inherited code toward Domain-Driven Design and contribute across architecture, integrations and delivery.',
-    'Earlier, I co-founded Softrino in Lisbon, working directly with clients on requirements, estimates and priorities, and coordinating delivery through implementation, testing, release and support.',
-    'Senior engineering and technical leadership remain a parallel path. Applied AI and GenAI applications are my growth direction: I use AI-assisted and agentic engineering tools daily, owned the React frontend of an internal AI prototype, and am exploring an experimental engineering assistant.',
-    'Portuguese / EU citizen, based in Germany and open to relocation to German-speaking Switzerland.'
+    'At Mercedes-Benz Tech Innovation, I connect requirements, technical decisions and delivery. My current work spans an Angular frontend and Kotlin / Spring Boot backend-for-frontend, from implementation and testing to releases, deployment configuration and production diagnosis.',
+    'In SAFe teams, I contribute technical feasibility, estimates, dependencies and risks to refinement and PI Planning. I prioritise technical debt with the engineering team and agree defect priorities with the Product Owner, helping turn product needs into realistic delivery plans.',
+    'As a Softrino co-founder, I led client discovery, defined functional solutions and proposed the scope of initial MVPs and later releases. I agreed priorities and delivery trade-offs directly with clients, recruited and guided developers, and coordinated delivery through testing, release and support.',
   ],
 };
 
-export const personal = {
-  background: 'I have lived and worked in Portugal and Germany, which has given me an international perspective on collaboration, product development, and working with people from different backgrounds.',
-  everyday: 'I’m a father of three. Away from software, I make time for cycling, travel, and building things, from side projects to something practical at home.',
-  interests: [
-    { title: 'Aviation', description: 'Working toward an EASA LAPL, studying flight theory and radio communication.' },
-    { title: 'Photography', description: 'Portrait, travel, and aviation photography.' },
-    { title: 'Motorcycling', description: 'Exploring Europe and the Alps on two wheels.' },
-    { title: 'Family & building', description: 'Shared family adventures and practical projects at home.' },
-  ],
-};
-
-export const skills: SkillGroup[] = [
+export const achievements: Achievement[] = [
   {
-    title: 'Product & delivery',
-    description: 'Experience supporting Product Owners and coordinating client delivery.',
-    items: ['Requirements analysis', 'User stories & refinement', 'Backlog prioritization support', 'Stakeholder communication', 'Estimation & scope', 'Scrum facilitation', 'Technical delivery'],
+    title: 'Making application state understandable',
+    context: 'Mercedes-Benz Tech Innovation · Technical judgement',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'architecture',
+    scope: 'Vue · Pinia · Playwright',
+    description: 'Proposed replacing an inherited Redux implementation with Pinia, explained the technical case and implemented the change after team agreement. Refactored the frontend and added Playwright coverage for key workflows and regressions.',
+    outcome: 'Clearer state flow, more readable code and corrected data handling.',
+    tags: ['Architecture', 'Vue', 'Regression testing'],
   },
   {
-    title: 'Software engineering',
-    description: 'The technical foundation I bring to product decisions and delivery.',
-    items: ['Kotlin', 'Java', 'Spring Boot', 'Angular', 'TypeScript', 'React', 'Swift / iOS', 'PostgreSQL', 'REST APIs', 'Kafka', 'Docker', 'Kubernetes', 'CI/CD', 'Domain-Driven Design'],
+    title: 'From a client problem to a release plan',
+    context: 'Softrino · Client discovery & solution delivery',
+    organisation: 'Softrino',
+    visual: 'solutions',
+    scope: 'Co-founder · Active role 2011–2017',
+    description: 'Led discovery with clients, translated business needs into functional solutions and proposed what to deliver in an initial MVP and subsequent releases. Sequenced work around client priorities, technical dependencies, budget and available capacity.',
+    outcome: 'Scoped release plans and delivery trade-offs agreed directly with clients, followed through to implementation, release and support.',
+    tags: ['Client discovery', 'MVP scoping', 'Release sequencing'],
   },
   {
-    title: 'Applied AI',
-    description: 'Daily AI-assisted engineering, prototype work and ongoing exploration of LLM applications.',
-    items: ['AI-assisted engineering', 'Agentic development workflows', 'AI prototype frontend', 'Exploring LLM agents', 'Exploring tools / MCP integrations'],
+    title: 'Building foundations other teams can use',
+    context: 'Mercedes-Benz Tech Innovation · Developer enablement',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'enablement',
+    scope: 'Reusable tooling across assignments',
+    description: 'Helped create a Vue 3 migration template and starter standard after working in an early migration team. Across assignments, contributed reusable GitHub Actions, shared documentation and onboarding/offboarding automation across GitHub and collaboration tools.',
+    outcome: 'Reusable foundations for project setup, access and everyday delivery, adopted beyond the original team.',
+    tags: ['Developer experience', 'Automation', 'Standards'],
+  },
+  {
+    title: 'Giving an AI prototype its interface',
+    context: 'Mercedes-Benz Tech Innovation · AI-enabled product',
+    organisation: 'Mercedes-Benz Tech Innovation',
+    visual: 'ai',
+    scope: 'Sole frontend developer · About 2 months',
+    description: 'Developed the React conversational frontend of an internal AI-enabled component-comparison prototype, collaborating with the Python / LLM backend team.',
+    outcome: 'Delivered the conversational interface for a prototype with real users.',
+    tags: ['React', 'Conversational UI', 'AI prototype'],
   },
 ];
 
 export const experience: Experience[] = [
   {
-    company: 'Mercedes-Benz Tech Innovation', area: 'Senior Software Engineer · Dec 2018–present',
-    description: 'Work with Product Owners on requirements, stories, implementation scope and prioritization. Contribute to a vehicle-order-management platform using Angular, Kotlin / Spring Boot and PostgreSQL, modernizing inherited code toward DDD. Took ownership of migrating 2 repositories, 2 services and approximately 15 CI/CD workflows. Regularly facilitated Scrum events during six months of rotating team responsibility, and owned the React frontend of an internal AI prototype.',
+    company: 'Mercedes-Benz Tech Innovation',
+    area: 'Senior Software Engineer · Dec 2018–present',
+    description: 'Software delivery across vehicle-order management, automotive software-update workflows and an internal AI prototype. Direct employment began at Daimler TSS, continuing the private car-sharing assignment started through Questax.',
+    highlights: [
+      'Shape technical scope and assess feasibility, dependencies and risks in SAFe refinement and PI Planning; prioritise technical debt with engineers and defects jointly with the Product Owner.',
+      'Share delivery and operational responsibility within the current frontend / backend-for-frontend team, including implementation, review, testing, deployment and production diagnosis. Experience includes on-call duty across assignments.',
+      'Completed a deadline-driven GitHub migration of two repositories, two services and approximately 15 workflows, resolving configuration and connectivity issues until deployment worked again.',
+      'Propose and implement technical improvements and reusable developer tooling. Facilitate retrospectives, workshops and technical decisions; co-facilitate planning and refinement.',
+    ],
   },
   {
-    company: 'Questax / Daimler TSS', area: 'Senior iOS Software Engineer · Oct 2017–Nov 2018',
-    description: 'Developed a connected private car-sharing product for Mercedes-Benz vehicles, with App Store release responsibility and Java backend contributions. Simplified an overcomplicated state architecture to address asynchronous consistency problems and reduce unnecessary API interactions. Collaborated with the Product Owner and engineering team on requirements and implementation decisions.',
+    company: 'Questax / Daimler TSS',
+    area: 'Senior iOS Software Engineer · Oct 2017–Nov 2018',
+    description: 'Assigned through Questax to a connected private car-sharing product for Mercedes-Benz vehicles. Joined Daimler TSS directly in December 2018 and continued on the same product until approximately early 2021.',
+    highlights: [
+      'Developed native iOS features, took App Store release responsibility and contributed to the Java backend.',
+      'Proposed and implemented simpler state management to address asynchronous consistency problems and unnecessary API interactions.',
+    ],
   },
   {
-    company: 'Softrino', area: 'Co-Founder · Technical & Delivery Lead · 2011–2017',
-    description: 'Worked directly with international clients to clarify requirements, prepare estimates and agree priorities. Coordinated mobile and web delivery from implementation through testing, release and support. Recruited and mentored developers within a five-person core team, with approximately ten people involved at peak including students, contractors and external contributors.',
+    company: 'Softrino',
+    area: 'Co-Founder · Nov 2011–Aug 2017',
+    description: 'Co-founded a software company in Lisbon and led technical discovery and delivery for international mobile and web clients. Shaped solutions, MVP scope and release sequencing around business needs and technical dependencies.',
+    highlights: [
+      'Led requirements analysis and architecture, prepared estimates and agreed scope, priorities and capacity trade-offs directly with clients.',
+      'Proposed initial MVP releases and follow-up scope, explaining what each milestone would deliver within the agreed budget and timeline.',
+      'Handled recruitment and guided developers within a five-person core team, with approximately ten contributors involved at peak.',
+      'Built and supported partner lead-submission APIs; worked on SEPA direct-debit scheduling, bank API integration and duplicate-charge prevention.',
+    ],
+  },
+  {
+    company: 'Independent work · Portugal',
+    area: 'Independent Software Developer · Approx. 2006–2011',
+    description: 'Backend and frontend client work as a sole proprietor, before co-founding Softrino.',
+    highlights: [
+      'As the sole software engineer, developed a management-system backend from scratch for inventory workflows connected with scanning equipment and barcode-enabled staff stations.',
+    ],
+  },
+];
+
+export const skills: SkillGroup[] = [
+  {
+    title: 'Product, solutions & client delivery',
+    description: 'Technical product and solution responsibilities grounded in engineering, plus direct client discovery and delivery as a co-founder.',
+    items: ['Requirements & solution definition', 'SAFe / PI Planning', 'Feasibility, dependencies & risks', 'Technical-debt prioritisation', 'Joint defect prioritisation', 'MVP scope & release sequencing', 'Client discovery & trade-offs'],
+  },
+  {
+    title: 'Full-stack engineering',
+    description: 'Kotlin / Java services and TypeScript frontends, with experience in application search, integrations, web and mobile products.',
+    items: ['Kotlin / Java', 'Spring Boot', 'Angular / TypeScript', 'Vue / Pinia', 'React', 'PostgreSQL', 'REST APIs', 'Elasticsearch / application search', 'Earlier: native iOS, PHP / Laravel, Node.js / Express'],
+  },
+  {
+    title: 'Quality, operations & enablement',
+    description: 'Testing, release workflows, production support and reusable tools that help engineering teams deliver.',
+    items: ['GitHub Actions', 'Playwright', 'Docker / Kubernetes / K9s', 'AWS deployment configuration', 'Pact', 'SonarQube / Black Duck', 'Grafana / Kibana', 'On-call & production support', 'Reusable developer tooling'],
+  },
+  {
+    title: 'AI-assisted engineering',
+    description: 'Configure and use agent-assisted workflows for exploration, scoped implementation and review, while retaining responsibility for design, correctness and testing.',
+    items: ['GitHub Copilot / Devin', 'Parallel agent workflows', 'Implementation / test / review coordination', 'n8n automation', 'AI product frontend'],
   },
 ];
 
@@ -102,19 +177,31 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'AI Engineering Agent',
-    category: 'AI / Developer Productivity',
-    summary: 'An experimental assistant for understanding repositories, investigating problems, supporting implementation decisions, and automating parts of the development workflow.',
-    description: 'An experimental project in development, exploring how an engineering assistant can support repository understanding, investigation, and implementation decisions. Planned areas include LLM agents, tools and MCP integrations, repository context, code analysis, task planning, implementation assistance, and code review. It is not a finished production system.',
-    tags: ['LLM agents', 'Tools / MCP integrations', 'Repository context', 'Code analysis', 'Task planning', 'Implementation assistance', 'Code review', 'Developer workflows'],
+    category: 'Developer productivity',
+    summary: 'An experimental engineering assistant for repository understanding, investigation and implementation decisions.',
+    description: 'A personal project in development, exploring how an assistant can use repository context to investigate problems, plan changes and support code review.',
+    nextSteps: 'Explore tool integrations and evaluate the quality of repository-grounded answers and proposed changes.',
+    tags: ['Repository context', 'Task planning', 'Code review'],
     status: 'In development',
   },
   {
     id: 2,
     title: 'Planes Over Me',
-    category: 'Aviation / Web Application',
-    summary: 'A personal aviation project being developed to connect live aircraft data with location information, showing which aircraft are nearby or overhead.',
-    description: 'A personal aviation application in development. The aim is to bring live aircraft data and location-based information together to show aircraft nearby or overhead. Technical areas being explored include aviation APIs, geospatial data, maps, frontend development, backend integration, and deployment.',
-    tags: ['Aviation APIs', 'Location / geospatial data', 'Frontend application', 'Maps', 'Backend / API integration', 'Deployment'],
+    category: 'Aviation & location',
+    summary: 'A personal aviation application being developed to show which aircraft are nearby or overhead.',
+    description: 'A project bringing together aviation and web development. The goal is to connect live aircraft data with location information in a clear, useful interface.',
+    nextSteps: 'Explore aviation data sources, map interactions and the integration needed for location-based aircraft information.',
+    tags: ['Aviation data', 'Geospatial information', 'Web application'],
     status: 'In development',
   },
 ];
+
+export const personal = {
+  background: 'Away from software, I’m usually looking for a different perspective — in the air, behind a camera or on a road through the Alps.',
+  everyday: 'I’m a father of three. I enjoy cycling, travel and practical projects at home.',
+  interests: [
+    { title: 'Aviation', description: 'Working toward an EASA LAPL, studying flight theory and radio communication.' },
+    { title: 'Photography', description: 'Portraits, travel and aviation, with an eye for the details.' },
+    { title: 'Motorcycling', description: 'Exploring Europe and the Alps on two wheels.' },
+  ],
+};

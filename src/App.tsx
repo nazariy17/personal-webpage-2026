@@ -1,56 +1,108 @@
-import { useEffect, useState } from 'react';
-import { profile, personal, skills, experience, projects } from './content';
+import { useEffect, useRef, useState } from 'react';
+import { achievements, experience, personal, profile, projects, skills } from './content';
 import type { Project } from './content';
 import Hero from './components/Hero';
 import Contact from './components/Contact';
 import ContactAction from './components/ContactAction';
-import './contact.css';
 import ProjectDialog from './components/ProjectDialog';
-import { Reveal } from './components/Reveal';
+import WorkVisual from './components/WorkVisual';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import './content-sections.css';
-function Intro({ reduced }: { reduced: boolean }) {
-  const [done, setDone] = useState(reduced);
-  useEffect(() => {
-    if (reduced) { setDone(true); return; }
-    const timer = window.setTimeout(() => setDone(true), 900);
-    return () => window.clearTimeout(timer);
-  }, [reduced]);
-  return <div className={`loader ${done ? 'done' : ''}`} aria-hidden="true"><span>PERSONAL PORTFOLIO</span><div><strong>{profile.name.toUpperCase()}</strong><p>{profile.role.toUpperCase()}</p></div><span>WELCOME</span></div>;
-}
+import './contact.css';
+import './motion.css';
+
+const navigation = [
+  ['Selected work', 'work'],
+  ['Experience', 'experience'],
+  ['Capabilities', 'skills'],
+  ['Contact', 'contact'],
+];
+
 function Navigation() {
-  return <header className="site-header"><a className="brand" href="#home">{profile.name}<span className="brand-period">.</span></a><nav aria-label="Main navigation">{['About', 'Experience', 'Skills', 'Projects', 'Contact'].map(item => <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>)}</nav><ContactAction kind="linkedin" className="navigation-linkedin" iconOnly /></header>;
-}
-function About() {
-  return <section className="about section" id="about"><Reveal className={`about-card ${(profile.aboutImage || profile.portraitImage) ? 'about-card-with-photo' : ''}`}><span className="small-label">PRODUCT · ENGINEERING · AI</span>{(profile.aboutImage || profile.portraitImage) ? <img className="about-portrait" src={profile.aboutImage || profile.portraitImage || undefined} loading="lazy" alt={`Portrait of ${profile.name}`} /> : <div className="card-monogram" aria-hidden="true">N.</div>}<div className="card-caption"><strong>{profile.name}</strong><span>Engineer & former co-founder</span></div></Reveal><Reveal className="about-copy"><p className="eyebrow">01 / INTRODUCTION</p><h2>Product ownership,<br/><span>grounded in engineering.</span></h2>{profile.bio.map(text => <p key={text}>{text}</p>)}<p className="profile-languages"><strong>Languages:</strong> {profile.languages}</p><div className="disciplines">{[['Product ownership', 'Primary direction'], ['Engineering', 'Established foundation'], ['Applied AI', 'Growth direction']].map(([title, description]) => <div key={title}><strong>{title}</strong><span>{description}</span></div>)}</div></Reveal></section>;
-}
-function BeyondEngineering() {
-  return <section className="section beyond" aria-labelledby="beyond-heading">
-    <Reveal className="beyond-introduction"><div className="section-heading"><p className="eyebrow">A PERSONAL PERSPECTIVE</p><h2 id="beyond-heading">Beyond engineering.</h2></div><div className="beyond-copy"><p>{personal.background}</p><p>{personal.everyday}</p></div></Reveal>
-    <Reveal className="interest-grid">{personal.interests.map(interest => <article key={interest.title}><h3>{interest.title}</h3><p>{interest.description}</p></article>)}</Reveal>
-  </section>;
-}
-function Experience() {
-  return <section className="section experience" id="experience"><Reveal className="section-heading"><p className="eyebrow">02 / EXPERIENCE</p><h2>Requirements, decisions<br/><span>and delivery.</span></h2></Reveal><div className="experience-list">{experience.map((item, i) => <Reveal key={item.company}><article><span className="number">0{i + 1}</span><div><h3>{item.company}</h3><p>{item.area}</p></div><p>{item.description}</p></article></Reveal>)}</div></section>;
-}
-function Skills() {
-  return <section className="section skills" id="skills">
-    <Reveal className="section-heading"><p className="eyebrow">03 / CAPABILITIES</p><h2>Product, engineering & AI.</h2><p>Product responsibilities, engineering depth and a growing focus on applied AI.</p></Reveal>
-    <div className="skill-groups">{skills.map(group => <Reveal key={group.title}>
-      <article className="skill-group"><h3>{group.title}</h3><p>{group.description}</p><div className="skill-tags">{group.items.map(skill => <span key={skill}>{skill}</span>)}</div></article>
-    </Reveal>)}</div>
-  </section>;
-}
-function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
-  return <section className="section projects" id="projects"><Reveal className="section-heading"><p className="eyebrow">04 / PERSONAL PROJECTS</p><h2>Exploring what comes next.</h2><p>Two personal projects in development, extending my engineering experience into AI and aviation.</p></Reveal><div className="project-grid project-grid-pair">{projects.map((project, i) => <Reveal key={project.id}><button className="project-card" onClick={() => onSelect(project)}><span className="project-top">0{project.id} / {project.category.toUpperCase()} <span>↗</span></span><div className={`project-art art-${['one', 'two', 'three'][i]}`} aria-hidden="true"><span>0{project.id}</span></div><h3>{project.title}</h3><p>{project.summary}</p><span className="project-bottom">{project.status.toUpperCase()} <span>+</span></span></button></Reveal>)}</div></section>;
-}
-function Footer() {
-  return <footer><div className="footer-bottom"><span>© {new Date().getFullYear()} {profile.name}</span><span>{profile.role.toUpperCase()}</span><a href="#home">BACK TO TOP ↑</a></div></footer>;
-}
-export default function App() {
-  const reduced = useReducedMotion();
-  const [paused, setPaused] = useState(false);
-  const [project, setProject] = useState<Project | null>(null);
-  return <div className={`portfolio ${reduced || paused ? 'motion-paused' : 'js-motion'}`}><Intro reduced={reduced}/><a className="skip" href="#about">Skip to content</a><Navigation/><main><Hero reduced={reduced} paused={paused} setPaused={setPaused}/><About/><Experience/><Skills/><Projects onSelect={setProject}/><BeyondEngineering/><Contact/><Footer/></main><ProjectDialog project={project} onClose={() => setProject(null)}/></div>;
+  return <header className="site-header"><div className="header-inner">
+    <a className="brand" href="#home" aria-label="Nazariy Bohun — home"><span className="brand-name">Nazariy Bohun<small>Engineering & solutions</small></span></a>
+    <nav aria-label="Main navigation">{navigation.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
+    <ContactAction kind="linkedin" className="navigation-linkedin" iconOnly />
+  </div></header>;
 }
 
+function SelectedWork() {
+  return <section className="section selected-work" id="work" aria-labelledby="work-heading">
+    <div className="section-heading" data-reveal><p className="eyebrow">01 / Selected work</p><h2 id="work-heading">Ownership,<br /><span>in practice.</span></h2><p>Engineering decisions, client solutions and delivery responsibilities across Mercedes-Benz Tech Innovation and Softrino.</p></div>
+    <div className="achievement-grid">{achievements.map((item, index) => <article className="achievement" key={item.title} data-reveal>
+      <WorkVisual index={index} variant={item.visual} organisation={item.organisation} />
+      <div className="achievement-copy">
+      <div className="achievement-top"><span className="item-number">0{index + 1}</span><p>{item.context}</p></div>
+      <h3>{item.title}</h3><p className="achievement-scope">{item.scope}</p><p>{item.description}</p>
+      <p className="achievement-outcome"><span>Result</span>{item.outcome}</p>
+      <ul className="tag-list" aria-label="Technologies and focus">{item.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+      </div>
+    </article>)}</div>
+  </section>;
+}
+
+function Experience() {
+  return <section className="section experience" id="experience" aria-labelledby="experience-heading">
+    <div className="section-heading" data-reveal><p className="eyebrow">02 / Experience</p><h2 id="experience-heading">Engineering depth.<br /><span>Delivery perspective.</span></h2></div>
+    <div className="experience-list">{experience.map(item => <article key={item.company} data-reveal>
+      <div className="experience-employer"><h3>{item.company}</h3><p>{item.area}</p></div>
+      <div className="experience-detail"><p>{item.description}</p><ul>{item.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul></div>
+    </article>)}</div>
+  </section>;
+}
+
+function AboutAndSkills() {
+  return <section className="section capabilities" id="skills" aria-labelledby="skills-heading">
+    <div className="section-heading" data-reveal><p className="eyebrow">03 / Capabilities</p><h2 id="skills-heading">The bigger picture.<br /><span>The working detail.</span></h2></div>
+    <div className="about-grid"><p className="about-statement">Engineering depth.<br />Product judgement.<br />Founder experience.</p><div className="about-copy">{profile.bio.map(text => <p key={text}>{text}</p>)}<p className="profile-languages"><strong>Languages</strong>{profile.languages}</p></div></div>
+    <div className="skill-groups">{skills.map((group, index) => <article className="skill-group" key={group.title} data-reveal><span className="skill-symbol" aria-hidden="true">{['↗', '⌘', '⊞', '✳'][index]}</span><h3>{group.title}</h3><p>{group.description}</p><ul className="skill-list">{group.items.map(item => <li key={item}>{item}</li>)}</ul></article>)}</div>
+  </section>;
+}
+
+function Projects({ onSelect }: { onSelect: (project: Project) => void }) {
+  return <section className="section projects" id="projects" aria-labelledby="projects-heading">
+    <div className="section-heading" data-reveal><p className="eyebrow">04 / Personal projects</p><h2 id="projects-heading">Always building.<br /><span>Always curious.</span></h2><p>Two ongoing projects connecting engineering with personal interests.</p></div>
+    <div className="project-grid">{projects.map(project => <article className={`project-card project-card-${project.id}`} key={project.id} data-reveal>
+      <div className={`project-visual project-visual-${project.id}`} aria-hidden="true">{project.id === 1 ? <><div className="agent-orbit" /><span className="project-glyph">✳</span><span className="project-visual-note">Context → Reasoning → Action</span></> : <><div className="radar-ring" /><svg viewBox="0 0 64 64" fill="currentColor"><path d="m33 5 5 22 21 13v5l-21-7-1 13 8 6v3l-13-3-13 3v-3l8-6-1-13-21 7v-5l21-13 5-22z" /></svg><span className="project-visual-note">A different view of the sky</span></>}</div>
+      <div className="project-copy">
+      <div className="project-top"><p>{project.category}</p><span className="status">{project.status}</span></div>
+      <h3>{project.title}</h3><p>{project.summary}</p>
+      <button className="text-link" onClick={() => onSelect(project)} aria-label={`Read about ${project.title}`}>Project details <span aria-hidden="true">↗</span></button>
+      </div>
+    </article>)}</div>
+  </section>;
+}
+
+function Personal() {
+  return <section className="section personal" aria-labelledby="personal-heading">
+    <div className="personal-intro" data-reveal><div><p className="eyebrow">05 / A personal perspective</p><h2 id="personal-heading">Beyond<br /><span>the screen.</span></h2></div><div><p>{personal.background}</p><p>{personal.everyday}</p></div></div>
+    <div className="interest-grid">{personal.interests.map(item => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}</div>
+  </section>;
+}
+
+export default function App() {
+  const [project, setProject] = useState<Project | null>(null);
+  const reduced = useReducedMotion();
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const elements = root.current?.querySelectorAll<HTMLElement>('[data-reveal]');
+    if (!elements) return;
+    if (reduced || !('IntersectionObserver' in window)) {
+      elements.forEach(element => { element.dataset.visible = 'true'; });
+      return;
+    }
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).dataset.visible = 'true';
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: .08 });
+    elements.forEach(element => observer.observe(element));
+    return () => observer.disconnect();
+  }, [reduced]);
+  return <div ref={root} className={`portfolio ${reduced ? 'motion-paused' : 'motion-enabled'}`}><a className="skip" href="#main-content">Skip to content</a><Navigation />
+    <main id="main-content" tabIndex={-1}><Hero reduced={reduced} /><SelectedWork /><Experience /><AboutAndSkills /><Projects onSelect={setProject} /><Personal /><Contact /></main>
+    <footer className="site-footer"><div><a className="brand" href="#home">{profile.name}<span aria-hidden="true">.</span></a></div><p>© {new Date().getFullYear()} {profile.name}</p><a className="text-link" href="#home">Back to top <span aria-hidden="true">↑</span></a></footer>
+    <ProjectDialog project={project} onClose={() => setProject(null)} />
+  </div>;
+}

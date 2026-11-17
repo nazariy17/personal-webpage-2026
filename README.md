@@ -1,59 +1,59 @@
-# Nazariy Bohun · Personal Portfolio
+# Nazariy Bohun · Personal website
 
-A personal portfolio implemented with **React 19, TypeScript and Vite 7**. It presents my professional experience, product/engineering focus and ongoing side-project work.
+A React, TypeScript and Vite portfolio focused on senior software engineering, technical solutions and delivery. The page presents selected contributions at Mercedes-Benz Tech Innovation and Softrino, career history, capabilities, personal projects and contact details.
 
-**Project status:** The portfolio website itself is implemented in this repository. The AI Engineering Agent and aviation project described on the website are **in development**, not completed production products.
+## Local development
 
-## What is implemented
+Use Node.js 20.19+ or a compatible newer version, and pnpm.
 
-- Scroll-controlled introductory section with three rotating professional focus areas, a portrait photo and a progress indicator.
-- Responsive sections for background, experience, technical capabilities, projects and contact details.
-- Project detail dialogs, scroll-reveal effects, and LinkedIn/email contact links.
-- Motion controls and reduced-motion behaviour, keyboard focus affordances and a skip link.
-- TypeScript type checking as part of the build.
-
-The portrait **image is already included and configured** (`public/images/nazar-portrait-transparent.png`). A portrait-turn **video is not included**: `profile.portraitVideo` is currently `null`. Scroll interaction moves the existing image subtly, but does not simulate real video frames.
-
-## Run locally
-
-Use Node.js 20.19+ or a compatible newer version, and pnpm:
-
-```bash
-corepack enable
+```sh
 pnpm install
 pnpm dev
 ```
 
-Check types and build a production bundle:
+Open the local address printed by Vite. If its default port is occupied, Vite selects another available port.
 
-```bash
+## Check and preview the production build
+
+```sh
 pnpm typecheck
 pnpm build
 pnpm preview
 ```
 
-Vite outputs the production files to `dist/`.
+Open the preview address printed in the terminal. Preview serves the production bundle; development mode supports live editing.
 
-## Project structure
+`dist/` is generated and ignored by Git. Build before deployment. The existing `.openai/hosting.json` points static hosting at that generated directory.
 
-| Path | Purpose |
+## Content and implementation
+
+| File | Purpose |
 | --- | --- |
-| `src/content.ts` | Profile, experience, capabilities, personal interests and project status |
-| `src/App.tsx` | Application page and section composition |
-| `src/components/Hero.tsx` | Scroll-controlled introduction and portrait behaviour |
-| `src/components/ProjectDialog.tsx` | Accessible project detail dialog |
-| `src/hooks/useReducedMotion.ts` | Reduced-motion preference |
-| `src/styles.css`, `src/components/*.css` | Responsive styling and effects |
-| `public/images/` | Portrait and visual assets |
+| `src/content.ts` | Profile, selected achievements, employment, capabilities and project status |
+| `src/App.tsx` | Page sections, navigation and selected-project state |
+| `src/components/Hero.tsx` | Mountain cover, stationary portrait and mouse parallax |
+| `src/components/MountainScene.tsx` | Responsive mountain artwork and five-second airplane/contrail cycle |
+| `src/components/WorkVisual.tsx` | Decorative diagrams for the achievement cards |
+| `src/hooks/useReducedMotion.ts` | System motion preference, including live preference changes |
+| `src/components/ProjectDialog.tsx` | Native modal with scope, next steps and focus restoration |
+| `src/components/Contact.tsx` | Contact and relocation copy |
+| `src/styles.css` | Shared typography, colours, navigation, buttons and dialog styles |
+| `src/components/Hero.css` | Responsive introduction layout |
+| `src/content-sections.css` | Achievements, career, capabilities and project layouts |
+| `src/contact.css` | Contact layout and links |
+| `src/motion.css` | Headline reveal, achievement-diagram entrances and optional radar interaction |
+| `index.html` | Page title, social metadata and Person structured data |
+| `public/images/` | Existing portrait and image assets |
 
-## Edit and extend
+The modern Swiss visual system combines a cinematic alpine image cover, bold typography, Swiss-red accents, illustrated achievement cards and consistent grid alignment. The mountain scene drifts slowly and responds subtly to a mouse pointer, with 30% more parallax travel than the earlier revision. An airplane follows the original diagonal path every five seconds, with a growing contrail and a soft reset. A clean background plate avoids leaving a second static airplane behind; the original source asset remains unchanged. The smaller portrait stays stationary and anchored to the cover bottom, without orbit graphics, a glass caption or portrait transforms. The headline reveals line by line, and achievement diagrams animate as their cards enter view. Content sections reveal as they enter the viewport. The hero omits the slogan, scroll prompt and manual animation control. System reduced-motion preferences disable animation, reveal transitions and smooth scrolling. There is no loading overlay or scroll-pinned introduction.
 
-Professional content and contact details are configured in `src/content.ts`. The existing email, LinkedIn links and portrait image are already populated; there is no need to add placeholder values before using the website.
+The AI Engineering Agent and Planes Over Me are personal projects **in development**. Their descriptions distinguish current scope from planned exploration. The internal AI prototype case study describes frontend delivery, not ownership of its model or backend.
 
-An optional real head-turn video can be added later by placing the media in `public/` and setting `profile.portraitVideo`. Without a video, the implementation intentionally displays the still image.
+## Review before merging
 
-The site describes AI-related exploration separately from completed engineering employment. Do not interpret the planned AI assistant as an existing deployed service.
+The current redesign is developed on `feat/swiss-portfolio-review`. See [the review guide](docs/REVIEW.md) for task commits, local preview instructions and validation results. A feature-branch push does not itself merge or deploy `main`.
 
-## Hosting
 
-The repository contains a static hosting configuration under `.openai/hosting.json`. A buildable repository is not, by itself, proof of a particular live deployment or uptime level.
+Image-generation prompts and saved scene assets are documented in [the asset notes](docs/IMAGE_ASSETS.md).
+
+The latest professional copy is reconciled against the master career record dated 17 November 2026. See [the copy review](docs/COPY_REVIEW.md) for source provenance, wording decisions and evidence boundaries.
