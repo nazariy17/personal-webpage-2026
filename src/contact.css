@@ -14,11 +14,9 @@
 .contact-details > p + p { margin-top: 20px; }
 .contact-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 .contact-actions .contact-action { border: 1px solid #ffffff2b; border-radius: 8px; padding: 12px 17px; font-size: 13px; }
-.contact-actions .contact-action:first-child { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.contact-actions .contact-action:first-child { background: #fff; border-color: #fff; color: #142632; font-weight: 600; }
 .contact-actions .contact-action:hover { background: #ffffff12; color: white; }
-.contact-actions .contact-action:first-child:hover { background: var(--accent-ink); color: #fff; }
-.contact-address { display: inline-block; font-size: 12px; color: #afc1ce; margin-top: 22px; overflow-wrap: anywhere; }
-.contact-address:hover { color: var(--accent-on-dark); }
+.contact-actions .contact-action:first-child:hover { background: #e6edf2; border-color: #e6edf2; color: #142632; }
 @media (max-width: 1000px) { .contact-grid { gap: 32px; } }
 @media (max-width: 760px) {
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }

@@ -23,8 +23,8 @@
 .hero-facts { position: relative; z-index: 3; border-top: 1px solid #ffffff18; background: #0e1b26de; }
 .hero-facts-inner { max-width: calc(var(--content-width) + var(--gutter) * 2); margin-inline: auto; padding: 28px var(--gutter); display: grid; grid-template-columns: .8fr 1.2fr 1.2fr; gap: 32px; }
 .hero-facts p { display: flex; align-items: center; gap: 18px; }
-.hero-facts p > strong { font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -.06em; }
-.hero-facts p > strong span { color: var(--accent-on-dark); }
+.hero-facts p > strong { color: #fff; font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -.06em; }
+.hero-facts p > strong span { color: inherit; }
 .hero-facts p > span { font-size: 10px; color: #a7b9c8; line-height: 1.6; }
 .hero-facts p > span > strong { display: block; font-size: 13px; font-weight: 500; color: #e6edf2; margin-bottom: 4px; }
 .hero-facts p > span > span { display: block; font-size: 10px; }
@@ -59,7 +59,7 @@
   .hero-portrait img { object-position: center bottom; }
   .hero-facts-inner { grid-template-columns: 1fr; padding-block: 22px; gap: 20px; }
   .hero-facts p:not(:first-child) { border-top: 1px solid #ffffff12; padding-top: 16px; }
-  .hero-facts p > strong { font-size: 38px; }
+  .hero-facts p > strong { color: #fff; font-size: 38px; }
   .hero-facts p > .fact-icon { width: 42px; text-align: center; }
 }
 @media (max-width: 360px) {
